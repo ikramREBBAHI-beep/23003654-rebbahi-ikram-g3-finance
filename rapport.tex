@@ -1,0 +1,1324 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=2cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{french}
+\ifPDFTeX
+\else
+\babelfont{rm}[]{DejaVu Sans}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\},fontsize=\scriptsize}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{breaklines,fontsize=\scriptsize}
+\fvset{breaklines=true,fontsize=\scriptsize}
+\usepackage{longtable,booktabs,array}
+\usepackage{graphicx}
+\setlength{\parskip}{4pt}
+\AtBeginEnvironment{longtable}{\footnotesize}
+\usepackage{etoolbox}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={F8 --- Peut-on battre la marche aléatoire ?},
+  pdfauthor={Groupe : à compléter},
+  pdflang={fr},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{F8 --- Peut-on battre la marche aléatoire ?}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Classification supervisée avec référence sur l'indice MASI
+(2018-2025)}
+\author{Groupe : à compléter}
+\date{2026}
+
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Sujet} & Prévoir le \textbf{sens} (hausse / baisse) du rendement
+de la séance suivante de l'indice \textbf{MASI} (Moroccan All Shares
+Index) à partir de l'historique de prix. \\
+\textbf{Problématique} & Si les prix suivent une marche aléatoire, aucun
+modèle ne peut faire mieux qu'une règle triviale. Des algorithmes
+d'apprentissage supervisé, nourris d'indicateurs techniques, font-ils
+\textbf{significativement} mieux que cette référence, hors échantillon
+? \\
+\textbf{Objectif mesurable} & Sur le jeu de test chronologique (derniers
+15 \% des séances), obtenir une \textbf{précision supérieure à celle de
+la référence « marche aléatoire »} (toujours prédire la classe
+majoritaire du jeu d'entraînement), avec une p-valeur \textless{} 0,05
+(test binomial exact unilatéral). Critères secondaires : précision
+équilibrée, MCC, AUC, test de McNemar, validation glissante
+(\emph{walk-forward}) et rendement après coûts. \\
+\textbf{Données} &
+\texttt{data/raw/Moroccan\_All\_Shares\_Historical\_Data\_\_1\_.csv} : 1
+988 séances quotidiennes, 02/01/2018 → 31/12/2025. \\
+\end{longtable}
+
+\begin{quote}
+\textbf{Remarque sur la source.} L'intitulé du sujet mentionne « FRED
+SP500 », mais le fichier fourni contient l'indice \textbf{MASI}. Le
+notebook est donc réalisé sur le MASI ; seule la cellule de chargement
+(section 2) serait à adapter pour le S\&P 500 de FRED (colonne unique
+\texttt{SP500}, séparateur décimal différent).
+\end{quote}
+
+\textbf{Versions} : affichées dans la cellule de configuration
+ci-dessous.
+
+\hypertarget{configuration}{%
+\subsection{Configuration}\label{configuration}}
+
+Imports, graine aléatoire (\texttt{GRAINE\ =\ 42}) et chemins relatifs
+(le CSV est lu dans \texttt{../data/raw/} ; les figures vont dans
+\texttt{../figures/} et la table préparée dans
+\texttt{../data/processed/}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ sys, platform, random, warnings}
+\ImportTok{from}\NormalTok{ pathlib }\ImportTok{import}\NormalTok{ Path}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\ImportTok{import}\NormalTok{ matplotlib}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{import}\NormalTok{ scipy}
+\ImportTok{from}\NormalTok{ scipy }\ImportTok{import}\NormalTok{ stats}
+\ImportTok{import}\NormalTok{ sklearn}
+\ImportTok{from}\NormalTok{ sklearn.pipeline }\ImportTok{import}\NormalTok{ Pipeline}
+\ImportTok{from}\NormalTok{ sklearn.compose }\ImportTok{import}\NormalTok{ ColumnTransformer}
+\ImportTok{from}\NormalTok{ sklearn.preprocessing }\ImportTok{import}\NormalTok{ StandardScaler}
+\ImportTok{from}\NormalTok{ sklearn.linear\_model }\ImportTok{import}\NormalTok{ LogisticRegression}
+\ImportTok{from}\NormalTok{ sklearn.ensemble }\ImportTok{import}\NormalTok{ RandomForestClassifier, HistGradientBoostingClassifier}
+\ImportTok{from}\NormalTok{ sklearn.dummy }\ImportTok{import}\NormalTok{ DummyClassifier}
+\ImportTok{from}\NormalTok{ sklearn.metrics }\ImportTok{import}\NormalTok{ (accuracy\_score, balanced\_accuracy\_score, f1\_score,}
+\NormalTok{                             matthews\_corrcoef, roc\_auc\_score, confusion\_matrix)}
+
+\NormalTok{warnings.filterwarnings(}\StringTok{"ignore"}\NormalTok{)}
+\NormalTok{GRAINE }\OperatorTok{=} \DecValTok{42}
+\NormalTok{random.seed(GRAINE)}
+\NormalTok{np.random.seed(GRAINE)}
+
+\CommentTok{\# Chemins relatifs : le CSV doit se trouver à côté du notebook (ou dans ./data)}
+\NormalTok{NOM\_FICHIER }\OperatorTok{=} \StringTok{"Moroccan\_All\_Shares\_Historical\_Data\_\_1\_.csv"}
+\NormalTok{CHEMIN }\OperatorTok{=} \BuiltInTok{next}\NormalTok{(p }\ControlFlowTok{for}\NormalTok{ p }\KeywordTok{in}\NormalTok{ [Path(}\StringTok{"../data/raw"}\NormalTok{) }\OperatorTok{/}\NormalTok{ NOM\_FICHIER, Path(}\StringTok{"data/raw"}\NormalTok{) }\OperatorTok{/}\NormalTok{ NOM\_FICHIER] }\ControlFlowTok{if}\NormalTok{ p.exists())}
+\NormalTok{RACINE }\OperatorTok{=}\NormalTok{ CHEMIN.parent.parent.parent                  }\CommentTok{\# racine du projet}
+\NormalTok{DOSSIER\_FIG, DOSSIER\_PROC }\OperatorTok{=}\NormalTok{ RACINE }\OperatorTok{/} \StringTok{"figures"}\NormalTok{, RACINE }\OperatorTok{/} \StringTok{"data"} \OperatorTok{/} \StringTok{"processed"}
+\NormalTok{DOSSIER\_FIG.mkdir(exist\_ok}\OperatorTok{=}\VariableTok{True}\NormalTok{)}\OperatorTok{;}\NormalTok{ DOSSIER\_PROC.mkdir(exist\_ok}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{plt.rcParams.update(\{}\StringTok{"figure.figsize"}\NormalTok{: (}\DecValTok{10}\NormalTok{, }\DecValTok{4}\NormalTok{), }\StringTok{"axes.grid"}\NormalTok{: }\VariableTok{True}\NormalTok{, }\StringTok{"grid.alpha"}\NormalTok{: }\FloatTok{0.3}\NormalTok{\})}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Python"}\NormalTok{, platform.python\_version())}
+\ControlFlowTok{for}\NormalTok{ nom, mod }\KeywordTok{in}\NormalTok{ [(}\StringTok{"numpy"}\NormalTok{, np), (}\StringTok{"pandas"}\NormalTok{, pd), (}\StringTok{"scipy"}\NormalTok{, scipy), (}\StringTok{"scikit{-}learn"}\NormalTok{, sklearn), (}\StringTok{"matplotlib"}\NormalTok{, matplotlib)]:}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\SpecialCharTok{\{}\NormalTok{nom}\SpecialCharTok{:13s\}}\SpecialStringTok{"}\NormalTok{, mod.\_\_version\_\_)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"GRAINE ="}\NormalTok{, GRAINE, }\StringTok{"| fichier :"}\NormalTok{, CHEMIN)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Python 3.12.3}
+\NormalTok{numpy         2.5.4}
+\NormalTok{pandas        3.0.6}
+\NormalTok{scipy         1.18.1}
+\NormalTok{scikit{-}learn  1.9.1}
+\NormalTok{matplotlib    3.11.2}
+\NormalTok{GRAINE = 42 | fichier : ../data/raw/Moroccan\_All\_Shares\_Historical\_Data\_\_1\_.csv}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{jeu-de-donnuxe9es}{%
+\subsection{2. Jeu de données}\label{jeu-de-donnuxe9es}}
+
+\textbf{Chargement et vérifications} : dimensions, types, premières
+lignes, plage de dates et fréquence.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{brut }\OperatorTok{=}\NormalTok{ pd.read\_csv(CHEMIN)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Dimensions brutes :"}\NormalTok{, brut.shape)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Types bruts :"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(brut.dtypes)}
+\NormalTok{display(brut.head())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Dimensions brutes : (1988, 7)}
+
+\NormalTok{Types bruts :}
+\NormalTok{Date            str}
+\NormalTok{Price           str}
+\NormalTok{Open            str}
+\NormalTok{High            str}
+\NormalTok{Low             str}
+\NormalTok{Vol.        float64}
+\NormalTok{Change \%        str}
+\NormalTok{dtype: object}
+\NormalTok{         Date      Price       Open       High        Low  Vol. Change \%}
+\NormalTok{0  12/31/2025  18,846.35  18,654.74  18,869.80  18,651.55   NaN    1.03\%}
+\NormalTok{1  12/30/2025  18,654.74  18,386.49  18,672.90  18,386.49   NaN    1.46\%}
+\NormalTok{2  12/29/2025  18,386.49  18,476.19  18,813.23  18,378.58   NaN   {-}0.49\%}
+\NormalTok{3  12/26/2025  18,476.19  18,941.16  19,144.14  18,476.19   NaN   {-}2.45\%}
+\NormalTok{4  12/25/2025  18,941.16  18,917.37  19,048.87  18,864.61   NaN    0.13\%}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OperatorTok{=}\NormalTok{ brut.copy()}
+\ControlFlowTok{for}\NormalTok{ c }\KeywordTok{in}\NormalTok{ [}\StringTok{"Price"}\NormalTok{, }\StringTok{"Open"}\NormalTok{, }\StringTok{"High"}\NormalTok{, }\StringTok{"Low"}\NormalTok{]:}
+\NormalTok{    df[c] }\OperatorTok{=}\NormalTok{ df[c].}\BuiltInTok{str}\NormalTok{.replace(}\StringTok{","}\NormalTok{, }\StringTok{""}\NormalTok{, regex}\OperatorTok{=}\VariableTok{False}\NormalTok{).astype(}\BuiltInTok{float}\NormalTok{)}
+\NormalTok{df[}\StringTok{"Change \%"}\NormalTok{] }\OperatorTok{=}\NormalTok{ df[}\StringTok{"Change \%"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.rstrip(}\StringTok{"\%"}\NormalTok{).astype(}\BuiltInTok{float}\NormalTok{)}
+\NormalTok{df[}\StringTok{"Date"}\NormalTok{] }\OperatorTok{=}\NormalTok{ pd.to\_datetime(df[}\StringTok{"Date"}\NormalTok{], }\BuiltInTok{format}\OperatorTok{=}\StringTok{"\%m/}\SpecialCharTok{\%d}\StringTok{/\%Y"}\NormalTok{)}
+\NormalTok{df }\OperatorTok{=}\NormalTok{ df.sort\_values(}\StringTok{"Date"}\NormalTok{).reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)      }\CommentTok{\# ordre chronologique croissant}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Types après conversion :"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df.dtypes)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Plage de dates :"}\NormalTok{, df[}\StringTok{"Date"}\NormalTok{].}\BuiltInTok{min}\NormalTok{().date(), }\StringTok{"→"}\NormalTok{, df[}\StringTok{"Date"}\NormalTok{].}\BuiltInTok{max}\NormalTok{().date())}
+\NormalTok{ecarts }\OperatorTok{=}\NormalTok{ df[}\StringTok{"Date"}\NormalTok{].diff().dt.days.dropna()}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Écart médian entre séances :"}\NormalTok{, ecarts.median(), }\StringTok{"jour(s)"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Répartition des écarts (jours) :"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(ecarts.value\_counts().sort\_index().to\_string())}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Séances par jour de semaine (0 = lundi) :"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df[}\StringTok{"Date"}\NormalTok{].dt.dayofweek.value\_counts().sort\_index().to\_string())}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Séances par année :"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df.groupby(df[}\StringTok{"Date"}\NormalTok{].dt.year).size().to\_string())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Types après conversion :}
+\NormalTok{Date        datetime64[us]}
+\NormalTok{Price              float64}
+\NormalTok{Open               float64}
+\NormalTok{High               float64}
+\NormalTok{Low                float64}
+\NormalTok{Vol.               float64}
+\NormalTok{Change \%           float64}
+\NormalTok{dtype: object}
+
+\NormalTok{Plage de dates : 2018{-}01{-}02 → 2025{-}12{-}31}
+\NormalTok{Écart médian entre séances : 1.0 jour(s)}
+\NormalTok{Répartition des écarts (jours) :}
+\NormalTok{Date}
+\NormalTok{1.0    1536}
+\NormalTok{2.0      28}
+\NormalTok{3.0     383}
+\NormalTok{4.0      26}
+\NormalTok{5.0      10}
+\NormalTok{6.0       3}
+\NormalTok{7.0       1}
+
+\NormalTok{Séances par jour de semaine (0 = lundi) :}
+\NormalTok{Date}
+\NormalTok{0    396}
+\NormalTok{1    397}
+\NormalTok{2    397}
+\NormalTok{3    400}
+\NormalTok{4    398}
+
+\NormalTok{Séances par année :}
+\NormalTok{Date}
+\NormalTok{2018    247}
+\NormalTok{2019    246}
+\NormalTok{2020    250}
+\NormalTok{2021    249}
+\NormalTok{2022    254}
+\NormalTok{2023    249}
+\NormalTok{2024    246}
+\NormalTok{2025    247}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Constats.} 1 988 lignes × 7 colonnes ; le CSV est en ordre
+antéchronologique (le plus récent en premier) et tous les nombres sont
+des chaînes (séparateur de milliers « , », pourcentages avec « \% »).
+Après conversion et tri chronologique : période du 02/01/2018 au
+31/12/2025, \textbf{fréquence quotidienne en jours de bourse}
+(\textasciitilde248 séances par an). Les écarts de 3 jours correspondent
+aux week-ends (383 cas), ceux de 4 jours et plus aux jours fériés : il
+n'y a pas de séance manquante à reconstituer.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{display(df.describe().T.}\BuiltInTok{round}\NormalTok{(}\DecValTok{2}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Valeurs manquantes par colonne :"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(df.isna().}\BuiltInTok{sum}\NormalTok{().to\_string())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{           count                        mean                  min                  25\%                  50\%                  75\%                  max          std}
+\NormalTok{Date        1988  2021{-}12{-}31 01:10:59.154929  2018{-}01{-}02 00:00:00  2020{-}01{-}07 18:00:00  2022{-}01{-}04 12:00:00  2023{-}12{-}25 06:00:00  2025{-}12{-}31 00:00:00          NaN}
+\NormalTok{Price     1988.0                12703.959205              8987.89            11247.465            12107.875           13236.9725              20233.5  2359.926194}
+\NormalTok{Open      1988.0                12699.080045              8987.89           11246.9275             12103.69            13232.655              20233.5  2355.860102}
+\NormalTok{High      1988.0                12758.151167              9064.97           11296.8825             12160.37            13274.345             20340.23  2378.804814}
+\NormalTok{Low       1988.0                12651.332746              8916.12           11199.7525            12057.195            13176.215             20133.01  2343.703562}
+\NormalTok{Vol.         0.0                         NaN                  NaN                  NaN                  NaN                  NaN                  NaN          NaN}
+\NormalTok{Change \%  1988.0                    0.024074                {-}8.82                 {-}0.3                 0.04                 0.36                 5.45     0.774735}
+\NormalTok{Valeurs manquantes par colonne :}
+\NormalTok{Date           0}
+\NormalTok{Price          0}
+\NormalTok{Open           0}
+\NormalTok{High           0}
+\NormalTok{Low            0}
+\NormalTok{Vol.        1988}
+\NormalTok{Change \%       0}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Description du jeu (colonnes)}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Colonne
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Signification
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Unité / type
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{Date} & Date de la séance & jour (format américain
+MM/JJ/AAAA) \\
+\texttt{Price} & Cours de clôture du MASI & points d'indice \\
+\texttt{Open}, \texttt{High}, \texttt{Low} & Ouverture, plus haut, plus
+bas & points d'indice \\
+\texttt{Vol.} & Volume échangé & \textbf{entièrement vide} (100 \% de
+NaN) \\
+\texttt{Change\ \%} & Variation en pourcentage de la clôture par rapport
+à la veille & \% (arrondi à 2 décimales) \\
+\end{longtable}
+
+Le MASI est un indice de capitalisation boursière pondéré par le
+flottant, regroupant l'ensemble des actions cotées à la Bourse de
+Casablanca. Le fichier est au format des exports d'Investing.com (source
+exacte à confirmer par l'auteur). Limites : une seule série, aucun
+volume, et une ouverture qui reprend presque toujours la clôture de la
+veille.
+
+\hypertarget{exploration}{%
+\subsection{3. Exploration}\label{exploration}}
+
+\hypertarget{qualituxe9-des-donnuxe9es}{%
+\subsubsection{3.1 Qualité des
+données}\label{qualituxe9-des-donnuxe9es}}
+
+Pour chaque problème : méthode de détection → décision → justification.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 1) Valeurs manquantes}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Part de NaN dans Vol. :"}\NormalTok{, df[}\StringTok{"Vol."}\NormalTok{].isna().mean())}
+\CommentTok{\# 2) Doublons}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Dates dupliquées :"}\NormalTok{, df[}\StringTok{"Date"}\NormalTok{].duplicated().}\BuiltInTok{sum}\NormalTok{(), }\StringTok{"| lignes dupliquées :"}\NormalTok{, df.duplicated().}\BuiltInTok{sum}\NormalTok{())}
+\CommentTok{\# 3) Cohérence OHLC}
+\NormalTok{inco }\OperatorTok{=}\NormalTok{ ((df[}\StringTok{"High"}\NormalTok{] }\OperatorTok{\textless{}}\NormalTok{ df[}\StringTok{"Low"}\NormalTok{]) }\OperatorTok{|}\NormalTok{ (df[}\StringTok{"Price"}\NormalTok{] }\OperatorTok{\textgreater{}}\NormalTok{ df[}\StringTok{"High"}\NormalTok{]) }\OperatorTok{|}\NormalTok{ (df[}\StringTok{"Price"}\NormalTok{] }\OperatorTok{\textless{}}\NormalTok{ df[}\StringTok{"Low"}\NormalTok{]) }\OperatorTok{|}
+\NormalTok{        (df[}\StringTok{"Open"}\NormalTok{] }\OperatorTok{\textgreater{}}\NormalTok{ df[}\StringTok{"High"}\NormalTok{]) }\OperatorTok{|}\NormalTok{ (df[}\StringTok{"Open"}\NormalTok{] }\OperatorTok{\textless{}}\NormalTok{ df[}\StringTok{"Low"}\NormalTok{]))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Lignes OHLC incohérentes :"}\NormalTok{, }\BuiltInTok{int}\NormalTok{(inco.}\BuiltInTok{sum}\NormalTok{()))}
+\CommentTok{\# 4) Cohérence de « Change \% » avec le prix}
+\NormalTok{df[}\StringTok{"rendement"}\NormalTok{] }\OperatorTok{=}\NormalTok{ np.log(df[}\StringTok{"Price"}\NormalTok{]).diff()                 }\CommentTok{\# rendement log quotidien}
+\NormalTok{ecart\_chg }\OperatorTok{=}\NormalTok{ (df[}\StringTok{"Price"}\NormalTok{].pct\_change() }\OperatorTok{*} \DecValTok{100} \OperatorTok{{-}}\NormalTok{ df[}\StringTok{"Change \%"}\NormalTok{]).}\BuiltInTok{abs}\NormalTok{()}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Écart max |Change \% publié − calculé| :"}\NormalTok{, }\BuiltInTok{round}\NormalTok{(ecart\_chg.}\BuiltInTok{max}\NormalTok{(), }\DecValTok{4}\NormalTok{), }\StringTok{"point de \%  (arrondi à 2 décimales)"}\NormalTok{)}
+\CommentTok{\# 5) Open vs clôture précédente}
+\NormalTok{gap }\OperatorTok{=}\NormalTok{ (df[}\StringTok{"Open"}\NormalTok{] }\OperatorTok{/}\NormalTok{ df[}\StringTok{"Price"}\NormalTok{].shift(}\DecValTok{1}\NormalTok{) }\OperatorTok{{-}} \DecValTok{1}\NormalTok{) }\OperatorTok{*} \DecValTok{100}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Part de séances où Open == clôture de la veille :"}\NormalTok{, }\BuiltInTok{round}\NormalTok{((gap.}\BuiltInTok{abs}\NormalTok{() }\OperatorTok{\textless{}} \FloatTok{1e{-}9}\NormalTok{).mean(), }\DecValTok{3}\NormalTok{))}
+\CommentTok{\# 6) Valeurs atypiques (rendements) : méthode MAD robuste + règle des 5 écarts{-}types}
+\NormalTok{r }\OperatorTok{=}\NormalTok{ df[}\StringTok{"rendement"}\NormalTok{].dropna()}
+\NormalTok{mad }\OperatorTok{=}\NormalTok{ stats.median\_abs\_deviation(r, scale}\OperatorTok{=}\StringTok{"normal"}\NormalTok{)}
+\NormalTok{z\_rob }\OperatorTok{=}\NormalTok{ (r }\OperatorTok{{-}}\NormalTok{ r.median()) }\OperatorTok{/}\NormalTok{ mad}
+\NormalTok{masque }\OperatorTok{=}\NormalTok{ z\_rob.}\BuiltInTok{abs}\NormalTok{() }\OperatorTok{\textgreater{}} \DecValTok{5}
+\NormalTok{atyp }\OperatorTok{=}\NormalTok{ df.loc[masque[masque].index, [}\StringTok{"Date"}\NormalTok{, }\StringTok{"Price"}\NormalTok{, }\StringTok{"Change \%"}\NormalTok{]].assign(z\_robuste}\OperatorTok{=}\NormalTok{z\_rob[masque].}\BuiltInTok{round}\NormalTok{(}\DecValTok{1}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\CharTok{\textbackslash{}n}\SpecialStringTok{Rendements atypiques (|z robuste| \textgreater{} 5) : }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(atyp)}\SpecialCharTok{\}}\SpecialStringTok{ séances sur }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(r)}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(atyp.sort\_values(}\StringTok{"Date"}\NormalTok{).to\_string(index}\OperatorTok{=}\VariableTok{False}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Répartition par année :"}\NormalTok{, atyp[}\StringTok{"Date"}\NormalTok{].dt.year.value\_counts().sort\_index().to\_dict())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Part de NaN dans Vol. : 1.0}
+\NormalTok{Dates dupliquées : 0 | lignes dupliquées : 0}
+\NormalTok{Lignes OHLC incohérentes : 0}
+\NormalTok{Écart max |Change \% publié − calculé| : 0.0051 point de \%  (arrondi à 2 décimales)}
+\NormalTok{Part de séances où Open == clôture de la veille : 0.847}
+
+\NormalTok{Rendements atypiques (|z robuste| \textgreater{} 5) : 31 séances sur 1987}
+\NormalTok{      Date    Price  Change \%  z\_robuste}
+\NormalTok{2020{-}03{-}06 11474.03     {-}3.05       {-}6.4}
+\NormalTok{2020{-}03{-}09 10806.41     {-}5.82      {-}12.3}
+\NormalTok{2020{-}03{-}10 11395.21      5.45       10.7}
+\NormalTok{2020{-}03{-}12 10579.76     {-}6.70      {-}14.2}
+\NormalTok{2020{-}03{-}16  9596.00     {-}8.82      {-}18.9}
+\NormalTok{2020{-}03{-}17  9298.54     {-}3.10       {-}6.5}
+\NormalTok{2020{-}03{-}18  8987.89     {-}3.34       {-}7.0}
+\NormalTok{2020{-}03{-}19  9291.60      3.38        6.7}
+\NormalTok{2020{-}03{-}20  9609.27      3.42        6.8}
+\NormalTok{2020{-}03{-}23  9953.45      3.58        7.1}
+\NormalTok{2020{-}03{-}25  9891.77     {-}2.72       {-}5.7}
+\NormalTok{2020{-}06{-}17 10438.48      3.51        6.9}
+\NormalTok{2020{-}12{-}21 11164.60     {-}3.09       {-}6.5}
+\NormalTok{2022{-}02{-}24 12954.68     {-}4.11       {-}8.6}
+\NormalTok{2022{-}03{-}07 12415.46     {-}2.89       {-}6.1}
+\NormalTok{2022{-}05{-}10 12666.75     {-}2.44       {-}5.1}
+\NormalTok{2023{-}01{-}05 10040.91     {-}3.82       {-}8.0}
+\NormalTok{2023{-}01{-}06  9717.99     {-}3.22       {-}6.7}
+\NormalTok{2023{-}06{-}20 11704.88      2.63        5.2}
+\NormalTok{2023{-}10{-}05 12252.30      5.08       10.0}
+\NormalTok{2024{-}08{-}05 13602.42     {-}2.85       {-}6.0}
+\NormalTok{2025{-}01{-}03 15516.30      2.84        5.6}
+\NormalTok{2025{-}04{-}07 16260.30     {-}5.64      {-}11.9}
+\NormalTok{2025{-}04{-}09 16027.71     {-}2.74       {-}5.7}
+\NormalTok{2025{-}04{-}14 16579.84      3.17        6.3}
+\NormalTok{2025{-}04{-}15 17056.95      2.88        5.7}
+\NormalTok{2025{-}06{-}24 18224.19      2.65        5.2}
+\NormalTok{2025{-}09{-}09 19521.30     {-}2.59       {-}5.4}
+\NormalTok{2025{-}10{-}01 18371.20     {-}3.44       {-}7.2}
+\NormalTok{2025{-}10{-}20 18927.90      2.55        5.0}
+\NormalTok{2025{-}12{-}26 18476.19     {-}2.45       {-}5.1}
+\NormalTok{Répartition par année : \{2020: 13, 2022: 3, 2023: 4, 2024: 1, 2025: 10\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Problème
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Détection
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Décision
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Justification
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Valeurs manquantes} & \texttt{isna()} par colonne &
+\texttt{Vol.} (100 \% de NaN) \textbf{supprimée} ; aucune autre valeur
+manquante & Une colonne vide n'apporte aucune information et ne peut pas
+être imputée sans l'inventer. \\
+\textbf{Doublons} & Dates et lignes dupliquées & Aucun doublon : rien à
+faire & --- \\
+\textbf{Incohérences OHLC} & \texttt{Low\ ≤\ Open,\ Price\ ≤\ High} & 0
+incohérence & Les prix sont fiables. \\
+\textbf{\texttt{Change\ \%} vs prix} & Écart avec la variation
+recalculée & Écart max 0,005 point, soit l'arrondi à 2 décimales :
+\texttt{Change\ \%} est \textbf{redondante} et n'est pas utilisée ; on
+recalcule le rendement log depuis \texttt{Price}. & Éviter une variable
+arrondie et mieux contrôlée en interne. \\
+\textbf{Ouverture} & Part de séances où \texttt{Open} = clôture de la
+veille & 84,7 \% : \texttt{Open} est peu informative ; on ne garde que
+l'écart d'ouverture (\emph{gap}) comme variable. & Limite de la source,
+à discuter en section 8. \\
+\textbf{Valeurs atypiques} & z-score \textbf{robuste} (médiane/MAD) sur
+les rendements, seuil \textbar z\textbar{} \textgreater{} 5 & 31 séances
+(1,6 \%) signalées, \textbf{toutes conservées} : 13 en 2020 (krach
+Covid-19 de mars 2020), 10 en 2025 (dont le choc du 7 avril 2025), etc.
+& En finance, une valeur extrême est le plus souvent réelle (krach,
+crise). Les supprimer retirerait précisément les épisodes où le risque
+se matérialise et biaiserait l'évaluation. On choisit des
+modèles/pipelines peu sensibles aux extrêmes (arbres) ou régularisés
+(L2). \\
+\end{longtable}
+
+\hypertarget{statistiques-descriptives-utiles-au-probluxe8me}{%
+\subsubsection{3.2 Statistiques descriptives utiles au
+problème}\label{statistiques-descriptives-utiles-au-probluxe8me}}
+
+On étudie les propriétés des \textbf{rendements} : leur équilibre
+haussier/baissier, leur éventuelle autocorrélation (si elle est nulle,
+la marche aléatoire tient) et leur volatilité.
+
+\textbf{Constats.} (i) 52,8 \% des rendements sont positifs : un
+prédicteur « toujours hausse » est déjà un adversaire non trivial ; (ii)
+la distribution est très éloignée de la loi normale (asymétrie −1,55,
+kurtosis en excès ≈ 20,6, Jarque-Bera rejette la normalité) ; (iii) les
+rendements sont \textbf{faiblement mais significativement autocorrélés}
+(ρ₁ ≈ 0,126, ρ₂ ≈ 0,114, Ljung-Box à 10 retards : p ≈ 5·10⁻¹¹), ce qui
+contredit la marche aléatoire \emph{stricte} ; (iv) les rendements au
+carré sont autocorrélés (ρ ≈ 0,20) : la volatilité est regroupée, avec
+un pic en mars 2020.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Statistiques des rendements log quotidiens :"}\NormalTok{)}
+\NormalTok{res }\OperatorTok{=}\NormalTok{ pd.Series(\{}
+    \StringTok{"moyenne (\%)"}\NormalTok{: r.mean() }\OperatorTok{*} \DecValTok{100}\NormalTok{, }\StringTok{"écart{-}type (\%)"}\NormalTok{: r.std() }\OperatorTok{*} \DecValTok{100}\NormalTok{,}
+    \StringTok{"min (\%)"}\NormalTok{: r.}\BuiltInTok{min}\NormalTok{() }\OperatorTok{*} \DecValTok{100}\NormalTok{, }\StringTok{"max (\%)"}\NormalTok{: r.}\BuiltInTok{max}\NormalTok{() }\OperatorTok{*} \DecValTok{100}\NormalTok{,}
+    \StringTok{"asymétrie"}\NormalTok{: stats.skew(r), }\StringTok{"kurtosis excès"}\NormalTok{: stats.kurtosis(r),}
+    \StringTok{"part de jours \textgreater{} 0"}\NormalTok{: (r }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{).mean(), }\StringTok{"part de jours = 0"}\NormalTok{: (r }\OperatorTok{==} \DecValTok{0}\NormalTok{).mean()\}).}\BuiltInTok{round}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(res.to\_string())}
+\NormalTok{jb }\OperatorTok{=}\NormalTok{ stats.jarque\_bera(r)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\CharTok{\textbackslash{}n}\SpecialStringTok{Jarque{-}Bera : stat = }\SpecialCharTok{\{}\NormalTok{jb}\SpecialCharTok{.}\NormalTok{statistic}\SpecialCharTok{:.1f\}}\SpecialStringTok{, p{-}valeur = }\SpecialCharTok{\{}\NormalTok{jb}\SpecialCharTok{.}\NormalTok{pvalue}\SpecialCharTok{:.2e\}}\SpecialStringTok{  → normalité rejetée"}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ acf(x, nlags):}
+\NormalTok{    x }\OperatorTok{=}\NormalTok{ np.asarray(x) }\OperatorTok{{-}}\NormalTok{ np.mean(x)}
+    \ControlFlowTok{return}\NormalTok{ np.array([np.}\BuiltInTok{sum}\NormalTok{(x[k:] }\OperatorTok{*}\NormalTok{ x[:}\BuiltInTok{len}\NormalTok{(x) }\OperatorTok{{-}}\NormalTok{ k]) }\OperatorTok{/}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(x }\OperatorTok{*}\NormalTok{ x) }\ControlFlowTok{for}\NormalTok{ k }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{1}\NormalTok{, nlags }\OperatorTok{+} \DecValTok{1}\NormalTok{)])}
+\NormalTok{rho }\OperatorTok{=}\NormalTok{ acf(r, }\DecValTok{10}\NormalTok{)}
+\NormalTok{n }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(r)}
+\NormalTok{Q }\OperatorTok{=}\NormalTok{ n }\OperatorTok{*}\NormalTok{ (n }\OperatorTok{+} \DecValTok{2}\NormalTok{) }\OperatorTok{*}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(rho }\OperatorTok{**} \DecValTok{2} \OperatorTok{/}\NormalTok{ (n }\OperatorTok{{-}}\NormalTok{ np.arange(}\DecValTok{1}\NormalTok{, }\DecValTok{11}\NormalTok{)))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Autocorrélations lags 1..10 :"}\NormalTok{, np.}\BuiltInTok{round}\NormalTok{(rho, }\DecValTok{3}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Ljung{-}Box (10 lags) : Q = }\SpecialCharTok{\{}\NormalTok{Q}\SpecialCharTok{:.1f\}}\SpecialStringTok{, p{-}valeur = }\SpecialCharTok{\{}\DecValTok{1} \OperatorTok{{-}}\NormalTok{ stats}\SpecialCharTok{.}\NormalTok{chi2}\SpecialCharTok{.}\NormalTok{cdf(Q, }\DecValTok{10}\NormalTok{)}\SpecialCharTok{:.2e\}}\SpecialStringTok{"}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Autocorrélation des rendements² (lag 1) : }\SpecialCharTok{\{}\NormalTok{acf(r}\OperatorTok{**}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)[}\DecValTok{0}\NormalTok{]}\SpecialCharTok{:.3f\}}\SpecialStringTok{  (regroupement de volatilité)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Statistiques des rendements log quotidiens :}
+\NormalTok{moyenne (\%)           0.0210}
+\NormalTok{écart{-}type (\%)        0.7791}
+\NormalTok{min (\%)              {-}9.2317}
+\NormalTok{max (\%)               5.3054}
+\NormalTok{asymétrie            {-}1.5497}
+\NormalTok{kurtosis excès       20.6384}
+\NormalTok{part de jours \textgreater{} 0     0.5279}
+\NormalTok{part de jours = 0     0.0005}
+
+\NormalTok{Jarque{-}Bera : stat = 36059.9, p{-}valeur = 0.00e+00  → normalité rejetée}
+\NormalTok{Autocorrélations lags 1..10 : [ 0.126  0.114 {-}0.004 {-}0.038 {-}0.022 {-}0.001  0.037 {-}0.049  0.022  0.004]}
+\NormalTok{Ljung{-}Box (10 lags) : Q = 69.9, p{-}valeur = 4.58e{-}11}
+\NormalTok{Autocorrélation des rendements² (lag 1) : 0.197  (regroupement de volatilité)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{graphiques}{%
+\subsubsection{3.3 Graphiques}\label{graphiques}}
+
+\emph{Haut gauche} : niveau du MASI (échelle log) et krach de mars 2020.
+\emph{Haut droit} : queues épaisses par rapport à la loi normale.
+\emph{Bas gauche} : autocorrélations aux retards 1 et 2 au-delà des
+bornes de bruit blanc. \emph{Bas droit} : volatilité glissante,
+nettement plus forte en 2020.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{13}\NormalTok{, }\DecValTok{8}\NormalTok{))}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{].plot(df[}\StringTok{"Date"}\NormalTok{], df[}\StringTok{"Price"}\NormalTok{], lw}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{].set\_yscale(}\StringTok{"log"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{].axvspan(pd.Timestamp(}\StringTok{"2020{-}03{-}01"}\NormalTok{), pd.Timestamp(}\StringTok{"2020{-}04{-}15"}\NormalTok{), color}\OperatorTok{=}\StringTok{"red"}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{.2}\NormalTok{, label}\OperatorTok{=}\StringTok{"krach Covid{-}19"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{].}\BuiltInTok{set}\NormalTok{(title}\OperatorTok{=}\StringTok{"MASI – niveau de clôture (échelle log)"}\NormalTok{, xlabel}\OperatorTok{=}\StringTok{"Date"}\NormalTok{, ylabel}\OperatorTok{=}\StringTok{"Indice (points, échelle log)"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{].legend()}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{].hist(r }\OperatorTok{*} \DecValTok{100}\NormalTok{, bins}\OperatorTok{=}\DecValTok{80}\NormalTok{, density}\OperatorTok{=}\VariableTok{True}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{.7}\NormalTok{, label}\OperatorTok{=}\StringTok{"observé"}\NormalTok{)}
+\NormalTok{xs }\OperatorTok{=}\NormalTok{ np.linspace(r.}\BuiltInTok{min}\NormalTok{() }\OperatorTok{*} \DecValTok{100}\NormalTok{, r.}\BuiltInTok{max}\NormalTok{() }\OperatorTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{300}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{].plot(xs, stats.norm.pdf(xs, r.mean() }\OperatorTok{*} \DecValTok{100}\NormalTok{, r.std() }\OperatorTok{*} \DecValTok{100}\NormalTok{), }\StringTok{"r"}\NormalTok{, label}\OperatorTok{=}\StringTok{"loi normale ajustée"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{].}\BuiltInTok{set}\NormalTok{(title}\OperatorTok{=}\StringTok{"Distribution des rendements log quotidiens"}\NormalTok{, xlabel}\OperatorTok{=}\StringTok{"Rendement (\%)"}\NormalTok{, ylabel}\OperatorTok{=}\StringTok{"Densité"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{].legend()}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{].bar(}\BuiltInTok{range}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{11}\NormalTok{), rho)}
+\NormalTok{borne }\OperatorTok{=} \FloatTok{1.96} \OperatorTok{/}\NormalTok{ np.sqrt(n)}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{].axhline(borne, color}\OperatorTok{=}\StringTok{"r"}\NormalTok{, ls}\OperatorTok{=}\StringTok{"{-}{-}"}\NormalTok{)}\OperatorTok{;}\NormalTok{ ax[}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{].axhline(}\OperatorTok{{-}}\NormalTok{borne, color}\OperatorTok{=}\StringTok{"r"}\NormalTok{, ls}\OperatorTok{=}\StringTok{"{-}{-}"}\NormalTok{, label}\OperatorTok{=}\StringTok{"bornes 95 \% (bruit blanc)"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{].}\BuiltInTok{set}\NormalTok{(title}\OperatorTok{=}\StringTok{"Autocorrélation des rendements"}\NormalTok{, xlabel}\OperatorTok{=}\StringTok{"Retard (jours de bourse)"}\NormalTok{, ylabel}\OperatorTok{=}\StringTok{"Coefficient d\textquotesingle{}autocorrélation"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{].legend()}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{].plot(df[}\StringTok{"Date"}\NormalTok{], df[}\StringTok{"rendement"}\NormalTok{].rolling(}\DecValTok{60}\NormalTok{).std() }\OperatorTok{*}\NormalTok{ np.sqrt(}\DecValTok{252}\NormalTok{) }\OperatorTok{*} \DecValTok{100}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{].}\BuiltInTok{set}\NormalTok{(title}\OperatorTok{=}\StringTok{"Volatilité annualisée glissante (60 séances)"}\NormalTok{, xlabel}\OperatorTok{=}\StringTok{"Date"}\NormalTok{, ylabel}\OperatorTok{=}\StringTok{"Volatilité annualisée (\%)"}\NormalTok{)}
+\NormalTok{plt.tight\_layout()}\OperatorTok{;}\NormalTok{ plt.savefig(DOSSIER\_FIG }\OperatorTok{/} \StringTok{"01\_exploration.png"}\NormalTok{, dpi}\OperatorTok{=}\DecValTok{150}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}\NormalTok{)}\OperatorTok{;}\NormalTok{ plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=\textheight]{../../figures/01_exploration.png}
+\caption{Exploration du MASI : niveau, distribution, autocorrélation et
+volatilité}
+\end{figure}
+
+\hypertarget{pruxe9paration}{%
+\subsection{4. Préparation}\label{pruxe9paration}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Nettoyage} : tri chronologique, conversion des types,
+  suppression de \texttt{Vol.} et de \texttt{Change\ \%} (redondante) ;
+  aucune valeur extrême supprimée (voir 3.1).
+\item
+  \textbf{Cible} : \texttt{cible\ =\ 1} si le rendement log de la séance
+  \textbf{suivante} est strictement positif, 0 sinon (le cas « = 0 » est
+  quasi inexistant, 0,05 \%).
+\item
+  \textbf{Création de variables} (toutes calculables à la clôture de la
+  séance \emph{t}, donc sans fuite d'information du futur) : rendements
+  retardés \texttt{r\_lag0…r\_lag4}, moyennes mobiles 5 et 20 jours,
+  volatilités 5 et 20 jours, amplitude (High−Low)/Close, écart
+  d'ouverture, momentum 10 jours, écart à la moyenne mobile 50 jours,
+  RSI 14 jours. 50 lignes sont perdues au démarrage (fenêtre de 50
+  jours).
+\item
+  \textbf{Encodage} : le jour de la semaine est encodé en \emph{one-hot}
+  (5 indicatrices), car c'est une variable catégorielle sans ordre
+  naturel.
+\item
+  \textbf{Mise à l'échelle} : \textbf{nécessaire pour la régression
+  logistique} (la pénalité L2 et l'optimisation dépendent des échelles :
+  sans standardisation, une variable en « points » écraserait une
+  variable en « \% ») ; \textbf{inutile pour les arbres} (forêt
+  aléatoire, gradient boosting), qui ne dépendent que de l'ordre des
+  valeurs. Le \texttt{StandardScaler} est \textbf{appris sur le train
+  uniquement} (dans un \texttt{Pipeline}) puis appliqué à
+  validation/test, pour éviter toute fuite.
+\item
+  \textbf{Découpage chronologique} 70 \% / 15 \% / 15 \% (pas de mélange
+  aléatoire : on prédit le futur avec le passé), avec un \textbf{embargo
+  d'une ligne} entre blocs, car la cible de la dernière ligne d'un bloc
+  utilise le rendement de la première séance du bloc suivant.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d }\OperatorTok{=}\NormalTok{ df.copy()}
+\NormalTok{r\_ }\OperatorTok{=}\NormalTok{ d[}\StringTok{"rendement"}\NormalTok{]}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ pd.DataFrame(index}\OperatorTok{=}\NormalTok{d.index)}
+\ControlFlowTok{for}\NormalTok{ k }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{5}\NormalTok{):}
+\NormalTok{    X[}\SpecialStringTok{f"r\_lag}\SpecialCharTok{\{}\NormalTok{k}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{] }\OperatorTok{=}\NormalTok{ r\_.shift(k)                     }\CommentTok{\# r\_lag0 = rendement du jour t (connu à la clôture)}
+\NormalTok{X[}\StringTok{"moy\_5"}\NormalTok{] }\OperatorTok{=}\NormalTok{ r\_.rolling(}\DecValTok{5}\NormalTok{).mean()}
+\NormalTok{X[}\StringTok{"moy\_20"}\NormalTok{] }\OperatorTok{=}\NormalTok{ r\_.rolling(}\DecValTok{20}\NormalTok{).mean()}
+\NormalTok{X[}\StringTok{"vol\_5"}\NormalTok{] }\OperatorTok{=}\NormalTok{ r\_.rolling(}\DecValTok{5}\NormalTok{).std()}
+\NormalTok{X[}\StringTok{"vol\_20"}\NormalTok{] }\OperatorTok{=}\NormalTok{ r\_.rolling(}\DecValTok{20}\NormalTok{).std()}
+\NormalTok{X[}\StringTok{"amplitude"}\NormalTok{] }\OperatorTok{=}\NormalTok{ (d[}\StringTok{"High"}\NormalTok{] }\OperatorTok{{-}}\NormalTok{ d[}\StringTok{"Low"}\NormalTok{]) }\OperatorTok{/}\NormalTok{ d[}\StringTok{"Price"}\NormalTok{]}
+\NormalTok{X[}\StringTok{"ecart\_ouverture"}\NormalTok{] }\OperatorTok{=}\NormalTok{ d[}\StringTok{"Open"}\NormalTok{] }\OperatorTok{/}\NormalTok{ d[}\StringTok{"Price"}\NormalTok{].shift(}\DecValTok{1}\NormalTok{) }\OperatorTok{{-}} \DecValTok{1}
+\NormalTok{X[}\StringTok{"momentum\_10"}\NormalTok{] }\OperatorTok{=}\NormalTok{ np.log(d[}\StringTok{"Price"}\NormalTok{] }\OperatorTok{/}\NormalTok{ d[}\StringTok{"Price"}\NormalTok{].shift(}\DecValTok{10}\NormalTok{))}
+\NormalTok{X[}\StringTok{"ecart\_mm50"}\NormalTok{] }\OperatorTok{=}\NormalTok{ d[}\StringTok{"Price"}\NormalTok{] }\OperatorTok{/}\NormalTok{ d[}\StringTok{"Price"}\NormalTok{].rolling(}\DecValTok{50}\NormalTok{).mean() }\OperatorTok{{-}} \DecValTok{1}
+\NormalTok{delta }\OperatorTok{=}\NormalTok{ d[}\StringTok{"Price"}\NormalTok{].diff()}
+\NormalTok{gain }\OperatorTok{=}\NormalTok{ delta.clip(lower}\OperatorTok{=}\DecValTok{0}\NormalTok{).rolling(}\DecValTok{14}\NormalTok{).mean()}\OperatorTok{;}\NormalTok{ perte }\OperatorTok{=}\NormalTok{ (}\OperatorTok{{-}}\NormalTok{delta.clip(upper}\OperatorTok{=}\DecValTok{0}\NormalTok{)).rolling(}\DecValTok{14}\NormalTok{).mean()}
+\NormalTok{X[}\StringTok{"rsi\_14"}\NormalTok{] }\OperatorTok{=} \DecValTok{100} \OperatorTok{{-}} \DecValTok{100} \OperatorTok{/}\NormalTok{ (}\DecValTok{1} \OperatorTok{+}\NormalTok{ gain }\OperatorTok{/}\NormalTok{ perte)}
+\NormalTok{jours }\OperatorTok{=}\NormalTok{ pd.get\_dummies(d[}\StringTok{"Date"}\NormalTok{].dt.dayofweek, prefix}\OperatorTok{=}\StringTok{"jour"}\NormalTok{, dtype}\OperatorTok{=}\BuiltInTok{int}\NormalTok{)   }\CommentTok{\# encodage one{-}hot}
+\NormalTok{X }\OperatorTok{=}\NormalTok{ pd.concat([X, jours], axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Cible : le rendement de LA SÉANCE SUIVANTE est{-}il positif ?  (1 = hausse, 0 = baisse ou nul)}
+\NormalTok{y }\OperatorTok{=}\NormalTok{ (r\_.shift(}\OperatorTok{{-}}\DecValTok{1}\NormalTok{) }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{).astype(}\BuiltInTok{float}\NormalTok{)}
+\NormalTok{y[r\_.shift(}\OperatorTok{{-}}\DecValTok{1}\NormalTok{).isna()] }\OperatorTok{=}\NormalTok{ np.nan}
+
+\NormalTok{base }\OperatorTok{=}\NormalTok{ pd.concat([d[[}\StringTok{"Date"}\NormalTok{]], X, y.rename(}\StringTok{"cible"}\NormalTok{)], axis}\OperatorTok{=}\DecValTok{1}\NormalTok{).dropna().reset\_index(drop}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{COL\_CONT }\OperatorTok{=}\NormalTok{ [c }\ControlFlowTok{for}\NormalTok{ c }\KeywordTok{in}\NormalTok{ X.columns }\ControlFlowTok{if} \KeywordTok{not}\NormalTok{ c.startswith(}\StringTok{"jour\_"}\NormalTok{)]}
+\NormalTok{COL\_VAR }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(X.columns)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Table finale :"}\NormalTok{, base.shape, }\StringTok{"| variables :"}\NormalTok{, }\BuiltInTok{len}\NormalTok{(COL\_VAR))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Période :"}\NormalTok{, base[}\StringTok{"Date"}\NormalTok{].}\BuiltInTok{min}\NormalTok{().date(), }\StringTok{"→"}\NormalTok{, base[}\StringTok{"Date"}\NormalTok{].}\BuiltInTok{max}\NormalTok{().date())}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Équilibre des classes (part de hausses) :"}\NormalTok{, }\BuiltInTok{round}\NormalTok{(base[}\StringTok{"cible"}\NormalTok{].mean(), }\DecValTok{4}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"Fenêtre perdue au démarrage (calcul des indicateurs) :"}\NormalTok{, }\BuiltInTok{len}\NormalTok{(d) }\OperatorTok{{-}} \BuiltInTok{len}\NormalTok{(base), }\StringTok{"lignes"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Table finale : (1938, 21) | variables : 19}
+\NormalTok{Période : 2018{-}03{-}13 → 2025{-}12{-}30}
+\NormalTok{Équilibre des classes (part de hausses) : 0.5263}
+\NormalTok{Fenêtre perdue au démarrage (calcul des indicateurs) : 50 lignes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(base)}
+\NormalTok{i1, i2 }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(n }\OperatorTok{*} \FloatTok{0.70}\NormalTok{), }\BuiltInTok{int}\NormalTok{(n }\OperatorTok{*} \FloatTok{0.85}\NormalTok{)}
+\NormalTok{tr, va, te }\OperatorTok{=}\NormalTok{ base.iloc[:i1], base.iloc[i1:i2], base.iloc[i2:]}
+\ControlFlowTok{for}\NormalTok{ nom, part }\KeywordTok{in}\NormalTok{ [(}\StringTok{"train"}\NormalTok{, tr), (}\StringTok{"validation"}\NormalTok{, va), (}\StringTok{"test"}\NormalTok{, te)]:}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\SpecialCharTok{\{}\NormalTok{nom}\SpecialCharTok{:10s\}}\SpecialStringTok{ }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(part)}\SpecialCharTok{:5d\}}\SpecialStringTok{ lignes  }\SpecialCharTok{\{}\NormalTok{part[}\StringTok{\textquotesingle{}Date\textquotesingle{}}\NormalTok{]}\SpecialCharTok{.}\BuiltInTok{min}\NormalTok{()}\SpecialCharTok{.}\NormalTok{date()}\SpecialCharTok{\}}\SpecialStringTok{ → }\SpecialCharTok{\{}\NormalTok{part[}\StringTok{\textquotesingle{}Date\textquotesingle{}}\NormalTok{]}\SpecialCharTok{.}\BuiltInTok{max}\NormalTok{()}\SpecialCharTok{.}\NormalTok{date()}\SpecialCharTok{\}}\SpecialStringTok{  part de hausses = }\SpecialCharTok{\{}\NormalTok{part[}\StringTok{\textquotesingle{}cible\textquotesingle{}}\NormalTok{]}\SpecialCharTok{.}\NormalTok{mean()}\SpecialCharTok{:.3f\}}\SpecialStringTok{"}\NormalTok{)}
+\NormalTok{Xtr, ytr }\OperatorTok{=}\NormalTok{ tr[COL\_VAR], tr[}\StringTok{"cible"}\NormalTok{].astype(}\BuiltInTok{int}\NormalTok{)}
+\NormalTok{Xva, yva }\OperatorTok{=}\NormalTok{ va[COL\_VAR], va[}\StringTok{"cible"}\NormalTok{].astype(}\BuiltInTok{int}\NormalTok{)}
+\NormalTok{Xte, yte }\OperatorTok{=}\NormalTok{ te[COL\_VAR], te[}\StringTok{"cible"}\NormalTok{].astype(}\BuiltInTok{int}\NormalTok{)}
+\CommentTok{\# La cible de la ligne t utilise le rendement t+1 ; la dernière ligne de chaque bloc partage donc}
+\CommentTok{\# une information avec la première du bloc suivant : on neutralise cette fuite avec un embargo d\textquotesingle{}1 ligne.}
+\NormalTok{Xva, yva }\OperatorTok{=}\NormalTok{ Xva.iloc[}\DecValTok{1}\NormalTok{:], yva.iloc[}\DecValTok{1}\NormalTok{:]}
+\NormalTok{base.to\_csv(DOSSIER\_PROC }\OperatorTok{/} \StringTok{"base\_modelisation.csv"}\NormalTok{, index}\OperatorTok{=}\VariableTok{False}\NormalTok{)   }\CommentTok{\# table préparée (variables + cible)}
+\NormalTok{Xte, yte }\OperatorTok{=}\NormalTok{ Xte.iloc[}\DecValTok{1}\NormalTok{:], yte.iloc[}\DecValTok{1}\NormalTok{:]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{train       1356 lignes  2018{-}03{-}13 → 2023{-}08{-}22  part de hausses = 0.507}
+\NormalTok{validation   291 lignes  2023{-}08{-}23 → 2024{-}10{-}25  part de hausses = 0.553}
+\NormalTok{test         291 lignes  2024{-}10{-}28 → 2025{-}12{-}30  part de hausses = 0.588}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{algorithmes}{%
+\subsection{5. Algorithmes}\label{algorithmes}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Modèle
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Rôle
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pourquoi
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Référence « marche aléatoire »} & Adversaire principal & Sans
+information exploitable, le meilleur pari est la classe majoritaire du
+train (dérive positive). \\
+Référence tirage pondéré & Contrôle & Prédire au hasard selon les
+fréquences du train. \\
+Référence persistance & Contrôle naïf & « Demain aura le même signe
+qu'aujourd'hui » : teste directement l'autocorrélation observée. \\
+\textbf{Régression logistique} (L2) & Modèle linéaire, interprétable &
+Variables standardisées ; coefficient \texttt{C} choisi sur la
+validation. \\
+\textbf{Forêt aléatoire} & Modèle non linéaire robuste & Profondeur
+limitée (2--5) et feuilles minimales (20/50) pour limiter le
+surapprentissage sur un signal faible. \\
+\textbf{Gradient boosting} (\texttt{HistGradientBoosting}) & Modèle non
+linéaire séquentiel & Arbres peu profonds, faible taux
+d'apprentissage. \\
+\end{longtable}
+
+\hypertarget{protocole}{%
+\subsection{6. Protocole}\label{protocole}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Hyperparamètres} choisis sur la \textbf{validation} (critère :
+  précision équilibrée, adaptée à des classes légèrement
+  déséquilibrées), jamais sur le test.
+\item
+  \textbf{Réentraînement} de chaque modèle sur train + validation, puis
+  \textbf{évaluation unique} sur le test (graine 42 partout).
+\item
+  \textbf{Métriques} : précision, précision équilibrée, F1, MCC, AUC.
+\item
+  \textbf{Significativité} : test binomial exact (contre 50 \% et contre
+  la référence majoritaire), intervalle de Wilson à 95 \%, test de
+  McNemar exact (modèle contre référence).
+\item
+  \textbf{Robustesse} : validation glissante \emph{walk-forward}
+  (2021-2025, réentraînement tous les 63 séances, fenêtre croissante),
+  car 290 séances de test donnent un intervalle de ±5,6 points environ.
+\item
+  \textbf{Lecture économique} : stratégie « long si hausse prédite,
+  sinon liquidités » avec un coût de 0,10 \% par changement de position
+  (hypothèse), comparée à l'achat-conservation.
+\end{enumerate}
+
+\hypertarget{choix-des-hyperparamuxe8tres-validation}{%
+\subsubsection{6.1 Choix des hyperparamètres
+(validation)}\label{choix-des-hyperparamuxe8tres-validation}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ preproc(echelle):}
+    \CommentTok{\# La mise à l\textquotesingle{}échelle est apprise sur le TRAIN uniquement (dans le pipeline), jamais sur val/test.}
+    \ControlFlowTok{return}\NormalTok{ ColumnTransformer([(}\StringTok{"sc"}\NormalTok{, StandardScaler() }\ControlFlowTok{if}\NormalTok{ echelle }\ControlFlowTok{else} \StringTok{"passthrough"}\NormalTok{, COL\_CONT)],}
+\NormalTok{                             remainder}\OperatorTok{=}\StringTok{"passthrough"}\NormalTok{)}
+
+\KeywordTok{def}\NormalTok{ metriques(y\_vrai, y\_pred, proba}\OperatorTok{=}\VariableTok{None}\NormalTok{):}
+\NormalTok{    m }\OperatorTok{=}\NormalTok{ \{}\StringTok{"accuracy"}\NormalTok{: accuracy\_score(y\_vrai, y\_pred),}
+         \StringTok{"acc\_equilibree"}\NormalTok{: balanced\_accuracy\_score(y\_vrai, y\_pred),}
+         \StringTok{"F1"}\NormalTok{: f1\_score(y\_vrai, y\_pred, zero\_division}\OperatorTok{=}\DecValTok{0}\NormalTok{),}
+         \StringTok{"MCC"}\NormalTok{: matthews\_corrcoef(y\_vrai, y\_pred)\}}
+\NormalTok{    m[}\StringTok{"AUC"}\NormalTok{] }\OperatorTok{=}\NormalTok{ roc\_auc\_score(y\_vrai, proba) }\ControlFlowTok{if}\NormalTok{ proba }\KeywordTok{is} \KeywordTok{not} \VariableTok{None} \ControlFlowTok{else}\NormalTok{ np.nan}
+    \ControlFlowTok{return}\NormalTok{ m}
+
+\NormalTok{grilles }\OperatorTok{=}\NormalTok{ \{}
+    \StringTok{"Régression logistique"}\NormalTok{: (}\KeywordTok{lambda} \OperatorTok{**}\NormalTok{p: Pipeline([(}\StringTok{"pre"}\NormalTok{, preproc(}\VariableTok{True}\NormalTok{)),}
+\NormalTok{                              (}\StringTok{"m"}\NormalTok{, LogisticRegression(max\_iter}\OperatorTok{=}\DecValTok{2000}\NormalTok{, random\_state}\OperatorTok{=}\NormalTok{GRAINE, }\OperatorTok{**}\NormalTok{p))]),}
+\NormalTok{                              [\{}\StringTok{"C"}\NormalTok{: c\} }\ControlFlowTok{for}\NormalTok{ c }\KeywordTok{in}\NormalTok{ [}\FloatTok{0.001}\NormalTok{, }\FloatTok{0.01}\NormalTok{, }\FloatTok{0.1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{]]),}
+    \StringTok{"Forêt aléatoire"}\NormalTok{: (}\KeywordTok{lambda} \OperatorTok{**}\NormalTok{p: Pipeline([(}\StringTok{"pre"}\NormalTok{, preproc(}\VariableTok{False}\NormalTok{)),}
+\NormalTok{                        (}\StringTok{"m"}\NormalTok{, RandomForestClassifier(n\_estimators}\OperatorTok{=}\DecValTok{300}\NormalTok{, random\_state}\OperatorTok{=}\NormalTok{GRAINE, n\_jobs}\OperatorTok{={-}}\DecValTok{1}\NormalTok{, }\OperatorTok{**}\NormalTok{p))]),}
+\NormalTok{                        [\{}\StringTok{"max\_depth"}\NormalTok{: d\_, }\StringTok{"min\_samples\_leaf"}\NormalTok{: l\} }\ControlFlowTok{for}\NormalTok{ d\_ }\KeywordTok{in}\NormalTok{ [}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{] }\ControlFlowTok{for}\NormalTok{ l }\KeywordTok{in}\NormalTok{ [}\DecValTok{20}\NormalTok{, }\DecValTok{50}\NormalTok{]]),}
+    \StringTok{"Gradient boosting"}\NormalTok{: (}\KeywordTok{lambda} \OperatorTok{**}\NormalTok{p: Pipeline([(}\StringTok{"pre"}\NormalTok{, preproc(}\VariableTok{False}\NormalTok{)),}
+\NormalTok{                          (}\StringTok{"m"}\NormalTok{, HistGradientBoostingClassifier(random\_state}\OperatorTok{=}\NormalTok{GRAINE, }\OperatorTok{**}\NormalTok{p))]),}
+\NormalTok{                          [\{}\StringTok{"max\_depth"}\NormalTok{: d\_, }\StringTok{"learning\_rate"}\NormalTok{: lr, }\StringTok{"max\_iter"}\NormalTok{: it, }\StringTok{"min\_samples\_leaf"}\NormalTok{: }\DecValTok{30}\NormalTok{\}}
+                           \ControlFlowTok{for}\NormalTok{ d\_ }\KeywordTok{in}\NormalTok{ [}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{] }\ControlFlowTok{for}\NormalTok{ lr }\KeywordTok{in}\NormalTok{ [}\FloatTok{0.03}\NormalTok{, }\FloatTok{0.1}\NormalTok{] }\ControlFlowTok{for}\NormalTok{ it }\KeywordTok{in}\NormalTok{ [}\DecValTok{50}\NormalTok{, }\DecValTok{150}\NormalTok{]]),}
+\NormalTok{\}}
+\NormalTok{choix }\OperatorTok{=}\NormalTok{ \{\}}
+\NormalTok{lignes }\OperatorTok{=}\NormalTok{ []}
+\ControlFlowTok{for}\NormalTok{ nom, (fabrique, grille) }\KeywordTok{in}\NormalTok{ grilles.items():}
+\NormalTok{    meilleur }\OperatorTok{=} \VariableTok{None}
+    \ControlFlowTok{for}\NormalTok{ p }\KeywordTok{in}\NormalTok{ grille:}
+\NormalTok{        mod }\OperatorTok{=}\NormalTok{ fabrique(}\OperatorTok{**}\NormalTok{p).fit(Xtr, ytr)}
+\NormalTok{        proba }\OperatorTok{=}\NormalTok{ mod.predict\_proba(Xva)[:, }\DecValTok{1}\NormalTok{]}
+\NormalTok{        pred }\OperatorTok{=}\NormalTok{ (proba }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{).astype(}\BuiltInTok{int}\NormalTok{)}
+\NormalTok{        score }\OperatorTok{=}\NormalTok{ balanced\_accuracy\_score(yva, pred)}
+\NormalTok{        lignes.append(\{}\StringTok{"modèle"}\NormalTok{: nom, }\StringTok{"hyperparamètres"}\NormalTok{: }\BuiltInTok{str}\NormalTok{(p), }\StringTok{"acc\_équilibrée\_val"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(score, }\DecValTok{4}\NormalTok{),}
+                       \StringTok{"AUC\_val"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(roc\_auc\_score(yva, proba), }\DecValTok{4}\NormalTok{)\})}
+        \ControlFlowTok{if}\NormalTok{ meilleur }\KeywordTok{is} \VariableTok{None} \KeywordTok{or}\NormalTok{ score }\OperatorTok{\textgreater{}}\NormalTok{ meilleur[}\DecValTok{0}\NormalTok{]:}
+\NormalTok{            meilleur }\OperatorTok{=}\NormalTok{ (score, p)}
+\NormalTok{    choix[nom] }\OperatorTok{=}\NormalTok{ meilleur[}\DecValTok{1}\NormalTok{]}
+\BuiltInTok{print}\NormalTok{(pd.DataFrame(lignes).sort\_values([}\StringTok{"modèle"}\NormalTok{, }\StringTok{"acc\_équilibrée\_val"}\NormalTok{], ascending}\OperatorTok{=}\NormalTok{[}\VariableTok{True}\NormalTok{, }\VariableTok{False}\NormalTok{]).to\_string(index}\OperatorTok{=}\VariableTok{False}\NormalTok{))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Hyperparamètres retenus (validation) :"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ k, v }\KeywordTok{in}\NormalTok{ choix.items(): }\BuiltInTok{print}\NormalTok{(}\StringTok{" {-}"}\NormalTok{, k, v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{               modèle                                                                  hyperparamètres  acc\_équilibrée\_val  AUC\_val}
+\NormalTok{      Forêt aléatoire                                         \{\textquotesingle{}max\_depth\textquotesingle{}: 5, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 20\}              0.5517   0.5425}
+\NormalTok{      Forêt aléatoire                                         \{\textquotesingle{}max\_depth\textquotesingle{}: 5, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 50\}              0.5416   0.5453}
+\NormalTok{      Forêt aléatoire                                         \{\textquotesingle{}max\_depth\textquotesingle{}: 3, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 20\}              0.5389   0.5499}
+\NormalTok{      Forêt aléatoire                                         \{\textquotesingle{}max\_depth\textquotesingle{}: 3, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 50\}              0.5334   0.5488}
+\NormalTok{      Forêt aléatoire                                         \{\textquotesingle{}max\_depth\textquotesingle{}: 2, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 50\}              0.5315   0.5516}
+\NormalTok{      Forêt aléatoire                                         \{\textquotesingle{}max\_depth\textquotesingle{}: 2, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 20\}              0.5130   0.5544}
+\NormalTok{    Gradient boosting  \{\textquotesingle{}max\_depth\textquotesingle{}: 2, \textquotesingle{}learning\_rate\textquotesingle{}: 0.1, \textquotesingle{}max\_iter\textquotesingle{}: 150, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 30\}              0.5512   0.5662}
+\NormalTok{    Gradient boosting  \{\textquotesingle{}max\_depth\textquotesingle{}: 2, \textquotesingle{}learning\_rate\textquotesingle{}: 0.03, \textquotesingle{}max\_iter\textquotesingle{}: 50, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 30\}              0.5368   0.5300}
+\NormalTok{    Gradient boosting  \{\textquotesingle{}max\_depth\textquotesingle{}: 3, \textquotesingle{}learning\_rate\textquotesingle{}: 0.1, \textquotesingle{}max\_iter\textquotesingle{}: 150, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 30\}              0.5358   0.5258}
+\NormalTok{    Gradient boosting  \{\textquotesingle{}max\_depth\textquotesingle{}: 3, \textquotesingle{}learning\_rate\textquotesingle{}: 0.03, \textquotesingle{}max\_iter\textquotesingle{}: 50, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 30\}              0.5161   0.5105}
+\NormalTok{    Gradient boosting \{\textquotesingle{}max\_depth\textquotesingle{}: 3, \textquotesingle{}learning\_rate\textquotesingle{}: 0.03, \textquotesingle{}max\_iter\textquotesingle{}: 150, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 30\}              0.5139   0.5172}
+\NormalTok{    Gradient boosting   \{\textquotesingle{}max\_depth\textquotesingle{}: 2, \textquotesingle{}learning\_rate\textquotesingle{}: 0.1, \textquotesingle{}max\_iter\textquotesingle{}: 50, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 30\}              0.5101   0.5250}
+\NormalTok{    Gradient boosting \{\textquotesingle{}max\_depth\textquotesingle{}: 2, \textquotesingle{}learning\_rate\textquotesingle{}: 0.03, \textquotesingle{}max\_iter\textquotesingle{}: 150, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 30\}              0.5062   0.5308}
+\NormalTok{    Gradient boosting   \{\textquotesingle{}max\_depth\textquotesingle{}: 3, \textquotesingle{}learning\_rate\textquotesingle{}: 0.1, \textquotesingle{}max\_iter\textquotesingle{}: 50, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 30\}              0.5053   0.5096}
+\NormalTok{Régression logistique                                                                      \{\textquotesingle{}C\textquotesingle{}: 0.01\}              0.4964   0.5067}
+\NormalTok{Régression logistique                                                                         \{\textquotesingle{}C\textquotesingle{}: 1\}              0.4887   0.4898}
+\NormalTok{Régression logistique                                                                        \{\textquotesingle{}C\textquotesingle{}: 10\}              0.4887   0.4895}
+\NormalTok{Régression logistique                                                                       \{\textquotesingle{}C\textquotesingle{}: 0.1\}              0.4873   0.4929}
+\NormalTok{Régression logistique                                                                     \{\textquotesingle{}C\textquotesingle{}: 0.001\}              0.4839   0.5235}
+
+\NormalTok{Hyperparamètres retenus (validation) :}
+\NormalTok{ {-} Régression logistique \{\textquotesingle{}C\textquotesingle{}: 0.01\}}
+\NormalTok{ {-} Forêt aléatoire \{\textquotesingle{}max\_depth\textquotesingle{}: 5, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 20\}}
+\NormalTok{ {-} Gradient boosting \{\textquotesingle{}max\_depth\textquotesingle{}: 2, \textquotesingle{}learning\_rate\textquotesingle{}: 0.1, \textquotesingle{}max\_iter\textquotesingle{}: 150, \textquotesingle{}min\_samples\_leaf\textquotesingle{}: 30\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ruxe9sultats}{%
+\subsection{7. Résultats}\label{ruxe9sultats}}
+
+\hypertarget{test-chronologique-jamais-vu-pendant-la-suxe9lection}{%
+\subsubsection{7.1 Test chronologique (jamais vu pendant la
+sélection)}\label{test-chronologique-jamais-vu-pendant-la-suxe9lection}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Xdev }\OperatorTok{=}\NormalTok{ pd.concat([Xtr, Xva])}\OperatorTok{;}\NormalTok{ ydev }\OperatorTok{=}\NormalTok{ pd.concat([ytr, yva])}
+\NormalTok{resultats, predictions, probas }\OperatorTok{=}\NormalTok{ \{\}, \{\}, \{\}}
+
+\CommentTok{\# {-}{-}{-} Références {-}{-}{-}}
+\NormalTok{maj }\OperatorTok{=}\NormalTok{ DummyClassifier(strategy}\OperatorTok{=}\StringTok{"most\_frequent"}\NormalTok{).fit(Xdev, ydev)}
+\NormalTok{alea }\OperatorTok{=}\NormalTok{ DummyClassifier(strategy}\OperatorTok{=}\StringTok{"stratified"}\NormalTok{, random\_state}\OperatorTok{=}\NormalTok{GRAINE).fit(Xdev, ydev)}
+\NormalTok{predictions[}\StringTok{"Réf. marche aléatoire (classe majoritaire)"}\NormalTok{] }\OperatorTok{=}\NormalTok{ maj.predict(Xte)}
+\NormalTok{predictions[}\StringTok{"Réf. tirage aléatoire pondéré"}\NormalTok{] }\OperatorTok{=}\NormalTok{ alea.predict(Xte)}
+\CommentTok{\# Persistance : « demain = signe d\textquotesingle{}aujourd\textquotesingle{}hui » (rendement du jour t = r\_lag0)}
+\NormalTok{predictions[}\StringTok{"Réf. persistance (signe de la veille)"}\NormalTok{] }\OperatorTok{=}\NormalTok{ (Xte[}\StringTok{"r\_lag0"}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{).astype(}\BuiltInTok{int}\NormalTok{).values}
+\NormalTok{probas[}\StringTok{"Réf. persistance (signe de la veille)"}\NormalTok{] }\OperatorTok{=}\NormalTok{ Xte[}\StringTok{"r\_lag0"}\NormalTok{].values}
+
+\CommentTok{\# {-}{-}{-} Modèles (réentraînés sur train+validation avec les hyperparamètres choisis) {-}{-}{-}}
+\ControlFlowTok{for}\NormalTok{ nom, (fabrique, \_) }\KeywordTok{in}\NormalTok{ grilles.items():}
+\NormalTok{    mod }\OperatorTok{=}\NormalTok{ fabrique(}\OperatorTok{**}\NormalTok{choix[nom]).fit(Xdev, ydev)}
+\NormalTok{    probas[nom] }\OperatorTok{=}\NormalTok{ mod.predict\_proba(Xte)[:, }\DecValTok{1}\NormalTok{]}
+\NormalTok{    predictions[nom] }\OperatorTok{=}\NormalTok{ (probas[nom] }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{).astype(}\BuiltInTok{int}\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ nom, pred }\KeywordTok{in}\NormalTok{ predictions.items():}
+\NormalTok{    resultats[nom] }\OperatorTok{=}\NormalTok{ metriques(yte, pred, probas.get(nom))}
+\NormalTok{tab }\OperatorTok{=}\NormalTok{ pd.DataFrame(resultats).T.}\BuiltInTok{round}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\NormalTok{display(tab)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{Test :"}\NormalTok{, }\BuiltInTok{len}\NormalTok{(yte), }\StringTok{"séances,"}\NormalTok{, Xte.index.size, }\StringTok{"| part de hausses :"}\NormalTok{, }\BuiltInTok{round}\NormalTok{(yte.mean(), }\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{                                            accuracy  acc\_equilibree      F1     MCC     AUC}
+\NormalTok{Réf. marche aléatoire (classe majoritaire)    0.5862          0.5000  0.7391  0.0000     NaN}
+\NormalTok{Réf. tirage aléatoire pondéré                 0.4621          0.4603  0.5063 {-}0.0782     NaN}
+\NormalTok{Réf. persistance (signe de la veille)         0.5793          0.5664  0.6412  0.1328  0.6018}
+\NormalTok{Régression logistique                         0.5345          0.5159  0.6110  0.0322  0.5338}
+\NormalTok{Forêt aléatoire                               0.5310          0.5179  0.5976  0.0357  0.5345}
+\NormalTok{Gradient boosting                             0.5034          0.5103  0.5263  0.0203  0.5194}
+
+\NormalTok{Test : 290 séances, 290 | part de hausses : 0.5862}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Lecture.} Sur le test, la référence « toujours hausse » atteint
+\textbf{58,6 \%} car la période (oct. 2024 → déc. 2025) est fortement
+haussière (58,8 \% de séances positives). Les trois modèles font moins
+bien : régression logistique 53,4 \%, forêt 53,1 \%, gradient boosting
+50,3 \%. Leur précision équilibrée (≈ 0,51-0,52), leur MCC (≈ 0,02-0,04)
+et leur AUC (≈ 0,52-0,53) sont proches du hasard. La persistance obtient
+la meilleure AUC (0,60) et le meilleur MCC (0,13).
+
+\hypertarget{significativituxe9-statistique}{%
+\subsubsection{7.2 Significativité
+statistique}\label{significativituxe9-statistique}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ref\_nom }\OperatorTok{=} \StringTok{"Réf. marche aléatoire (classe majoritaire)"}
+\NormalTok{ref\_pred }\OperatorTok{=}\NormalTok{ predictions[ref\_nom]}
+\NormalTok{p0 }\OperatorTok{=}\NormalTok{ accuracy\_score(yte, ref\_pred)}
+\BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"Précision de la référence (toujours « hausse ») sur le test : }\SpecialCharTok{\{}\NormalTok{p0}\SpecialCharTok{:.4f\}}\CharTok{\textbackslash{}n}\SpecialStringTok{"}\NormalTok{)}
+\NormalTok{lig }\OperatorTok{=}\NormalTok{ []}
+\ControlFlowTok{for}\NormalTok{ nom }\KeywordTok{in}\NormalTok{ [}\StringTok{"Régression logistique"}\NormalTok{, }\StringTok{"Forêt aléatoire"}\NormalTok{, }\StringTok{"Gradient boosting"}\NormalTok{, }\StringTok{"Réf. persistance (signe de la veille)"}\NormalTok{]:}
+\NormalTok{    pred }\OperatorTok{=}\NormalTok{ predictions[nom]}
+\NormalTok{    k }\OperatorTok{=} \BuiltInTok{int}\NormalTok{((pred }\OperatorTok{==}\NormalTok{ yte.values).}\BuiltInTok{sum}\NormalTok{())}\OperatorTok{;}\NormalTok{ N }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(yte)}
+\NormalTok{    ic }\OperatorTok{=}\NormalTok{ stats.binomtest(k, N).proportion\_ci(}\FloatTok{0.95}\NormalTok{, method}\OperatorTok{=}\StringTok{"wilson"}\NormalTok{)}
+\NormalTok{    p\_bin }\OperatorTok{=}\NormalTok{ stats.binomtest(k, N, }\FloatTok{0.5}\NormalTok{, alternative}\OperatorTok{=}\StringTok{"greater"}\NormalTok{).pvalue          }\CommentTok{\# vs hasard pur 50 \%}
+\NormalTok{    p\_ref }\OperatorTok{=}\NormalTok{ stats.binomtest(k, N, p0, alternative}\OperatorTok{=}\StringTok{"greater"}\NormalTok{).pvalue           }\CommentTok{\# vs référence majoritaire}
+\NormalTok{    b }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(((pred }\OperatorTok{==}\NormalTok{ yte.values) }\OperatorTok{\&}\NormalTok{ (ref\_pred }\OperatorTok{!=}\NormalTok{ yte.values)).}\BuiltInTok{sum}\NormalTok{())          }\CommentTok{\# modèle juste, réf. fausse}
+\NormalTok{    c }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(((pred }\OperatorTok{!=}\NormalTok{ yte.values) }\OperatorTok{\&}\NormalTok{ (ref\_pred }\OperatorTok{==}\NormalTok{ yte.values)).}\BuiltInTok{sum}\NormalTok{())          }\CommentTok{\# modèle faux, réf. juste}
+\NormalTok{    p\_mc }\OperatorTok{=}\NormalTok{ stats.binomtest(b, b }\OperatorTok{+}\NormalTok{ c, }\FloatTok{0.5}\NormalTok{).pvalue }\ControlFlowTok{if}\NormalTok{ b }\OperatorTok{+}\NormalTok{ c }\OperatorTok{\textgreater{}} \DecValTok{0} \ControlFlowTok{else}\NormalTok{ np.nan     }\CommentTok{\# McNemar exact (bilatéral)}
+\NormalTok{    lig.append(\{}\StringTok{"modèle"}\NormalTok{: nom, }\StringTok{"précision"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(k }\OperatorTok{/}\NormalTok{ N, }\DecValTok{4}\NormalTok{), }\StringTok{"IC95 bas"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(ic.low, }\DecValTok{3}\NormalTok{), }\StringTok{"IC95 haut"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(ic.high, }\DecValTok{3}\NormalTok{),}
+                \StringTok{"p (\textgreater{}50 \%)"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(p\_bin, }\DecValTok{3}\NormalTok{), }\StringTok{"p (\textgreater{} réf. majoritaire)"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(p\_ref, }\DecValTok{3}\NormalTok{), }\StringTok{"p McNemar vs réf."}\NormalTok{: }\BuiltInTok{round}\NormalTok{(p\_mc, }\DecValTok{3}\NormalTok{)\})}
+\BuiltInTok{print}\NormalTok{(pd.DataFrame(lig).to\_string(index}\OperatorTok{=}\VariableTok{False}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Précision de la référence (toujours « hausse ») sur le test : 0.5862}
+
+\NormalTok{                               modèle  précision  IC95 bas  IC95 haut  p (\textgreater{}50 \%)  p (\textgreater{} réf. majoritaire)  p McNemar vs réf.}
+\NormalTok{                Régression logistique     0.5345     0.477      0.591      0.132                   0.967              0.188}
+\NormalTok{                      Forêt aléatoire     0.5310     0.474      0.588      0.159                   0.975              0.174}
+\NormalTok{                    Gradient boosting     0.5034     0.446      0.561      0.477                   0.998              0.065}
+\NormalTok{Réf. persistance (signe de la veille)     0.5793     0.522      0.635      0.004                   0.618              0.927}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Lecture.} Aucun modèle ne dépasse la référence majoritaire (p ≈
+0,97 à 1,00). Aucun n'est non plus significativement meilleur que 50 \%
+(p = 0,13 ; 0,16 ; 0,48). Seule la persistance bat 50 \% (p = 0,004)
+mais pas la référence majoritaire (p = 0,62). Les écarts avec la
+référence ne sont pas significatifs au sens de McNemar (p ≥ 0,065).
+
+\hypertarget{robustesse-validation-glissante-walk-forward-2021-2025}{%
+\subsubsection{7.3 Robustesse : validation glissante (walk-forward,
+2021-2025)}\label{robustesse-validation-glissante-walk-forward-2021-2025}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Robustesse : validation « glissante » (walk{-}forward) sur 2021{-}2025, réentraînement tous les 63 séances,}
+\CommentTok{\# fenêtre croissante, hyperparamètres figés (choisis ci{-}dessus).}
+\NormalTok{DEB }\OperatorTok{=}\NormalTok{ base.index[base[}\StringTok{"Date"}\NormalTok{] }\OperatorTok{\textgreater{}=} \StringTok{"2021{-}01{-}01"}\NormalTok{][}\DecValTok{0}\NormalTok{]}
+\NormalTok{PAS }\OperatorTok{=} \DecValTok{63}
+\NormalTok{res\_wf }\OperatorTok{=}\NormalTok{ \{nom: [] }\ControlFlowTok{for}\NormalTok{ nom }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(grilles) }\OperatorTok{+}\NormalTok{ [}\StringTok{"Réf. majoritaire"}\NormalTok{, }\StringTok{"Persistance"}\NormalTok{]\}}
+\NormalTok{vrai\_wf }\OperatorTok{=}\NormalTok{ []}
+\ControlFlowTok{for}\NormalTok{ debut }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(DEB, }\BuiltInTok{len}\NormalTok{(base) }\OperatorTok{{-}} \DecValTok{1}\NormalTok{, PAS):}
+\NormalTok{    fin }\OperatorTok{=} \BuiltInTok{min}\NormalTok{(debut }\OperatorTok{+}\NormalTok{ PAS, }\BuiltInTok{len}\NormalTok{(base))}
+\NormalTok{    app }\OperatorTok{=}\NormalTok{ base.iloc[:debut }\OperatorTok{{-}} \DecValTok{1}\NormalTok{]                       }\CommentTok{\# embargo d\textquotesingle{}1 ligne}
+\NormalTok{    tst }\OperatorTok{=}\NormalTok{ base.iloc[debut:fin]}
+\NormalTok{    vrai\_wf.append(tst[}\StringTok{"cible"}\NormalTok{].astype(}\BuiltInTok{int}\NormalTok{).values)}
+    \ControlFlowTok{for}\NormalTok{ nom, (fabrique, \_) }\KeywordTok{in}\NormalTok{ grilles.items():}
+\NormalTok{        res\_wf[nom].append(fabrique(}\OperatorTok{**}\NormalTok{choix[nom]).fit(app[COL\_VAR], app[}\StringTok{"cible"}\NormalTok{].astype(}\BuiltInTok{int}\NormalTok{)).predict(tst[COL\_VAR]))}
+\NormalTok{    res\_wf[}\StringTok{"Réf. majoritaire"}\NormalTok{].append(np.full(}\BuiltInTok{len}\NormalTok{(tst), }\BuiltInTok{int}\NormalTok{(app[}\StringTok{"cible"}\NormalTok{].mean() }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{)))}
+\NormalTok{    res\_wf[}\StringTok{"Persistance"}\NormalTok{].append((tst[}\StringTok{"r\_lag0"}\NormalTok{] }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{).astype(}\BuiltInTok{int}\NormalTok{).values)}
+\NormalTok{vrai\_wf }\OperatorTok{=}\NormalTok{ np.concatenate(vrai\_wf)}
+\NormalTok{lig }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{base\_maj }\OperatorTok{=}\NormalTok{ np.concatenate(res\_wf[}\StringTok{"Réf. majoritaire"}\NormalTok{])}
+\ControlFlowTok{for}\NormalTok{ nom, morceaux }\KeywordTok{in}\NormalTok{ res\_wf.items():}
+\NormalTok{    pred }\OperatorTok{=}\NormalTok{ np.concatenate(morceaux)}
+\NormalTok{    k }\OperatorTok{=} \BuiltInTok{int}\NormalTok{((pred }\OperatorTok{==}\NormalTok{ vrai\_wf).}\BuiltInTok{sum}\NormalTok{())}\OperatorTok{;}\NormalTok{ N }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(vrai\_wf)}
+\NormalTok{    b }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(((pred }\OperatorTok{==}\NormalTok{ vrai\_wf) }\OperatorTok{\&}\NormalTok{ (base\_maj }\OperatorTok{!=}\NormalTok{ vrai\_wf)).}\BuiltInTok{sum}\NormalTok{())}\OperatorTok{;}\NormalTok{ c }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(((pred }\OperatorTok{!=}\NormalTok{ vrai\_wf) }\OperatorTok{\&}\NormalTok{ (base\_maj }\OperatorTok{==}\NormalTok{ vrai\_wf)).}\BuiltInTok{sum}\NormalTok{())}
+\NormalTok{    lig.append(\{}\StringTok{"méthode"}\NormalTok{: nom, }\StringTok{"N"}\NormalTok{: N, }\StringTok{"précision"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(k }\OperatorTok{/}\NormalTok{ N, }\DecValTok{4}\NormalTok{),}
+                \StringTok{"acc\_équilibrée"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(balanced\_accuracy\_score(vrai\_wf, pred), }\DecValTok{4}\NormalTok{),}
+                \StringTok{"p (\textgreater{} 50 \%)"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(stats.binomtest(k, N, }\FloatTok{0.5}\NormalTok{, alternative}\OperatorTok{=}\StringTok{"greater"}\NormalTok{).pvalue, }\DecValTok{4}\NormalTok{),}
+                \StringTok{"p McNemar vs réf."}\NormalTok{: }\BuiltInTok{round}\NormalTok{(stats.binomtest(b, b }\OperatorTok{+}\NormalTok{ c, }\FloatTok{0.5}\NormalTok{).pvalue, }\DecValTok{4}\NormalTok{) }\ControlFlowTok{if}\NormalTok{ b }\OperatorTok{+}\NormalTok{ c }\ControlFlowTok{else}\NormalTok{ np.nan\})}
+\BuiltInTok{print}\NormalTok{(pd.DataFrame(lig).to\_string(index}\OperatorTok{=}\VariableTok{False}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{              méthode    N  précision  acc\_équilibrée  p (\textgreater{} 50 \%)  p McNemar vs réf.}
+\NormalTok{Régression logistique 1244     0.5442          0.5335      0.0010             0.5626}
+\NormalTok{      Forêt aléatoire 1244     0.5611          0.5547      0.0000             0.1437}
+\NormalTok{    Gradient boosting 1244     0.5378          0.5397      0.0042             0.8441}
+\NormalTok{     Réf. majoritaire 1244     0.5330          0.5005      0.0108                NaN}
+\NormalTok{          Persistance 1244     0.5514          0.5475      0.0002             0.3614}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Lecture.} Sur 1 244 séances, les modèles font légèrement mieux
+que la référence (53,3 \%) : forêt 56,1 \%, persistance 55,1 \%,
+régression logistique 54,4 \%, gradient boosting 53,8 \%. Ils battent
+clairement 50 \% mais cela reflète surtout la dérive haussière ;
+\textbf{contre la référence majoritaire, aucune différence n'est
+significative} (McNemar p = 0,14 pour la forêt, la meilleure).
+Précaution : les hyperparamètres ont été choisis sur une période
+(validation) qui fait partie de ces plis, ce qui avantage légèrement les
+modèles.
+
+\hypertarget{graphiques-de-ruxe9sultats}{%
+\subsubsection{7.4 Graphiques de
+résultats}\label{graphiques-de-ruxe9sultats}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{13}\NormalTok{, }\FloatTok{4.5}\NormalTok{))}
+\NormalTok{noms }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(tab.index)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].barh(noms, tab[}\StringTok{"accuracy"}\NormalTok{], color}\OperatorTok{=}\NormalTok{[}\StringTok{"\#999"}\NormalTok{] }\OperatorTok{*} \DecValTok{3} \OperatorTok{+}\NormalTok{ [}\StringTok{"\#1f77b4"}\NormalTok{] }\OperatorTok{*} \DecValTok{3}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].axvline(}\FloatTok{0.5}\NormalTok{, color}\OperatorTok{=}\StringTok{"k"}\NormalTok{, ls}\OperatorTok{=}\StringTok{":"}\NormalTok{, label}\OperatorTok{=}\StringTok{"hasard pur (50 \%)"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].axvline(p0, color}\OperatorTok{=}\StringTok{"r"}\NormalTok{, ls}\OperatorTok{=}\StringTok{"{-}{-}"}\NormalTok{, label}\OperatorTok{=}\StringTok{"référence majoritaire"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].}\BuiltInTok{set}\NormalTok{(title}\OperatorTok{=}\StringTok{"Précision sur le jeu de test"}\NormalTok{, xlabel}\OperatorTok{=}\StringTok{"Précision (part de prévisions correctes)"}\NormalTok{, xlim}\OperatorTok{=}\NormalTok{(}\FloatTok{0.4}\NormalTok{, }\BuiltInTok{max}\NormalTok{(}\FloatTok{0.7}\NormalTok{, tab[}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{].}\BuiltInTok{max}\NormalTok{() }\OperatorTok{+} \FloatTok{.03}\NormalTok{)))}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].legend(loc}\OperatorTok{=}\StringTok{"lower right"}\NormalTok{)}
+\NormalTok{meilleur\_nom }\OperatorTok{=}\NormalTok{ tab.loc[[}\StringTok{"Régression logistique"}\NormalTok{, }\StringTok{"Forêt aléatoire"}\NormalTok{, }\StringTok{"Gradient boosting"}\NormalTok{], }\StringTok{"acc\_equilibree"}\NormalTok{].idxmax()}
+\NormalTok{cm }\OperatorTok{=}\NormalTok{ confusion\_matrix(yte, predictions[meilleur\_nom])}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{].imshow(cm, cmap}\OperatorTok{=}\StringTok{"Blues"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i, j), v }\KeywordTok{in}\NormalTok{ np.ndenumerate(cm): ax[}\DecValTok{1}\NormalTok{].text(j, i, v, ha}\OperatorTok{=}\StringTok{"center"}\NormalTok{, va}\OperatorTok{=}\StringTok{"center"}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{14}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{].}\BuiltInTok{set}\NormalTok{(title}\OperatorTok{=}\SpecialStringTok{f"Matrice de confusion – }\SpecialCharTok{\{}\NormalTok{meilleur\_nom}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{, xlabel}\OperatorTok{=}\StringTok{"Classe prédite (0 = baisse, 1 = hausse)"}\NormalTok{, ylabel}\OperatorTok{=}\StringTok{"Classe réelle"}\NormalTok{,}
+\NormalTok{          xticks}\OperatorTok{=}\NormalTok{[}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{], yticks}\OperatorTok{=}\NormalTok{[}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{])}\OperatorTok{;}\NormalTok{ ax[}\DecValTok{1}\NormalTok{].grid(}\VariableTok{False}\NormalTok{)}
+\NormalTok{plt.tight\_layout()}\OperatorTok{;}\NormalTok{ plt.savefig(DOSSIER\_FIG }\OperatorTok{/} \StringTok{"02\_resultats\_test.png"}\NormalTok{, dpi}\OperatorTok{=}\DecValTok{150}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}\NormalTok{)}\OperatorTok{;}\NormalTok{ plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=\textheight]{../../figures/02_resultats_test.png}
+\caption{Résultats sur le jeu de test : précision et matrice de
+confusion}
+\end{figure}
+
+\hypertarget{variables-les-plus-influentes}{%
+\subsubsection{7.5 Variables les plus
+influentes}\label{variables-les-plus-influentes}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rf }\OperatorTok{=}\NormalTok{ grilles[}\StringTok{"Forêt aléatoire"}\NormalTok{][}\DecValTok{0}\NormalTok{](}\OperatorTok{**}\NormalTok{choix[}\StringTok{"Forêt aléatoire"}\NormalTok{]).fit(Xdev, ydev)}
+\NormalTok{noms\_var }\OperatorTok{=}\NormalTok{ COL\_CONT }\OperatorTok{+}\NormalTok{ [c }\ControlFlowTok{for}\NormalTok{ c }\KeywordTok{in}\NormalTok{ COL\_VAR }\ControlFlowTok{if}\NormalTok{ c }\KeywordTok{not} \KeywordTok{in}\NormalTok{ COL\_CONT]}
+\NormalTok{imp }\OperatorTok{=}\NormalTok{ pd.Series(rf.named\_steps[}\StringTok{"m"}\NormalTok{].feature\_importances\_, index}\OperatorTok{=}\NormalTok{noms\_var).sort\_values()}
+\NormalTok{lr }\OperatorTok{=}\NormalTok{ grilles[}\StringTok{"Régression logistique"}\NormalTok{][}\DecValTok{0}\NormalTok{](}\OperatorTok{**}\NormalTok{choix[}\StringTok{"Régression logistique"}\NormalTok{]).fit(Xdev, ydev)}
+\NormalTok{coef }\OperatorTok{=}\NormalTok{ pd.Series(lr.named\_steps[}\StringTok{"m"}\NormalTok{].coef\_[}\DecValTok{0}\NormalTok{], index}\OperatorTok{=}\NormalTok{noms\_var).sort\_values()}
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{13}\NormalTok{, }\DecValTok{5}\NormalTok{))}
+\NormalTok{imp.tail(}\DecValTok{10}\NormalTok{).plot.barh(ax}\OperatorTok{=}\NormalTok{ax[}\DecValTok{0}\NormalTok{])}\OperatorTok{;}\NormalTok{ ax[}\DecValTok{0}\NormalTok{].}\BuiltInTok{set}\NormalTok{(title}\OperatorTok{=}\StringTok{"Forêt aléatoire – 10 variables les plus importantes"}\NormalTok{, xlabel}\OperatorTok{=}\StringTok{"Importance (réduction d\textquotesingle{}impureté)"}\NormalTok{)}
+\NormalTok{coef.reindex(coef.}\BuiltInTok{abs}\NormalTok{().sort\_values().tail(}\DecValTok{10}\NormalTok{).index).plot.barh(ax}\OperatorTok{=}\NormalTok{ax[}\DecValTok{1}\NormalTok{], color}\OperatorTok{=}\StringTok{"C1"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{].}\BuiltInTok{set}\NormalTok{(title}\OperatorTok{=}\StringTok{"Régression logistique – coefficients (variables standardisées)"}\NormalTok{, xlabel}\OperatorTok{=}\StringTok{"Coefficient"}\NormalTok{)}
+\NormalTok{plt.tight\_layout()}\OperatorTok{;}\NormalTok{ plt.savefig(DOSSIER\_FIG }\OperatorTok{/} \StringTok{"03\_importance\_variables.png"}\NormalTok{, dpi}\OperatorTok{=}\DecValTok{150}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}\NormalTok{)}\OperatorTok{;}\NormalTok{ plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=\textheight]{../../figures/03_importance_variables.png}
+\caption{Variables les plus influentes}
+\end{figure}
+
+\textbf{Lecture.} Dans les deux modèles, les variables dominantes sont
+le \textbf{rendement du jour (\texttt{r\_lag0})} et le \textbf{RSI 14
+jours} (coefficients positifs en régression logistique : continuation du
+mouvement récent), ce qui rejoint l'autocorrélation positive de la
+section 3. La forêt utilise aussi \texttt{moy\_20}, \texttt{r\_lag4} et
+\texttt{moy\_5}. Ces importances décrivent le modèle, pas une causalité
+ni un signal exploitable.
+
+\hypertarget{lecture-uxe9conomique-backtest-simplifiuxe9-sur-le-test}{%
+\subsubsection{7.6 Lecture économique (backtest simplifié sur le
+test)}\label{lecture-uxe9conomique-backtest-simplifiuxe9-sur-le-test}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rend\_te }\OperatorTok{=}\NormalTok{ te[}\StringTok{"Date"}\NormalTok{].iloc[}\DecValTok{1}\NormalTok{:].to\_frame()}
+\NormalTok{rend\_te[}\StringTok{"r\_suivant"}\NormalTok{] }\OperatorTok{=}\NormalTok{ np.exp(np.log(df.set\_index(}\StringTok{"Date"}\NormalTok{)[}\StringTok{"Price"}\NormalTok{]).diff().shift(}\OperatorTok{{-}}\DecValTok{1}\NormalTok{).reindex(rend\_te[}\StringTok{"Date"}\NormalTok{]).values) }\OperatorTok{{-}} \DecValTok{1}
+\NormalTok{cout }\OperatorTok{=} \FloatTok{0.001}                                           \CommentTok{\# 0,10 \% par changement de position (hypothèse)}
+\NormalTok{lig }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{courbes }\OperatorTok{=}\NormalTok{ \{\}}
+\ControlFlowTok{for}\NormalTok{ nom }\KeywordTok{in}\NormalTok{ [}\StringTok{"Régression logistique"}\NormalTok{, }\StringTok{"Forêt aléatoire"}\NormalTok{, }\StringTok{"Gradient boosting"}\NormalTok{]:}
+\NormalTok{    pos }\OperatorTok{=}\NormalTok{ pd.Series(predictions[nom], index}\OperatorTok{=}\NormalTok{rend\_te.index)}
+\NormalTok{    nb\_chg }\OperatorTok{=}\NormalTok{ pos.diff().}\BuiltInTok{abs}\NormalTok{().fillna(}\DecValTok{0}\NormalTok{)}
+\NormalTok{    ret }\OperatorTok{=}\NormalTok{ pos }\OperatorTok{*}\NormalTok{ rend\_te[}\StringTok{"r\_suivant"}\NormalTok{] }\OperatorTok{{-}}\NormalTok{ nb\_chg }\OperatorTok{*}\NormalTok{ cout}
+\NormalTok{    courbes[nom] }\OperatorTok{=}\NormalTok{ (}\DecValTok{1} \OperatorTok{+}\NormalTok{ ret).cumprod()}
+\NormalTok{    lig.append(\{}\StringTok{"stratégie"}\NormalTok{: nom, }\StringTok{"rendement cumulé (\%)"}\NormalTok{: }\BuiltInTok{round}\NormalTok{((courbes[nom].iloc[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{] }\OperatorTok{{-}} \DecValTok{1}\NormalTok{) }\OperatorTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{2}\NormalTok{),}
+                \StringTok{"Sharpe annualisé"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(ret.mean() }\OperatorTok{/}\NormalTok{ ret.std() }\OperatorTok{*}\NormalTok{ np.sqrt(}\DecValTok{252}\NormalTok{), }\DecValTok{2}\NormalTok{) }\ControlFlowTok{if}\NormalTok{ ret.std() }\OperatorTok{\textgreater{}} \DecValTok{0} \ControlFlowTok{else}\NormalTok{ np.nan,}
+                \StringTok{"nb de changements"}\NormalTok{: }\BuiltInTok{int}\NormalTok{(nb\_chg.}\BuiltInTok{sum}\NormalTok{())\})}
+\NormalTok{bh }\OperatorTok{=}\NormalTok{ (}\DecValTok{1} \OperatorTok{+}\NormalTok{ rend\_te[}\StringTok{"r\_suivant"}\NormalTok{]).cumprod()}\OperatorTok{;}\NormalTok{ courbes[}\StringTok{"Acheter{-}conserver"}\NormalTok{] }\OperatorTok{=}\NormalTok{ bh}
+\NormalTok{ret\_bh }\OperatorTok{=}\NormalTok{ rend\_te[}\StringTok{"r\_suivant"}\NormalTok{]}
+\NormalTok{lig.append(\{}\StringTok{"stratégie"}\NormalTok{: }\StringTok{"Acheter{-}conserver"}\NormalTok{, }\StringTok{"rendement cumulé (\%)"}\NormalTok{: }\BuiltInTok{round}\NormalTok{((bh.iloc[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{] }\OperatorTok{{-}} \DecValTok{1}\NormalTok{) }\OperatorTok{*} \DecValTok{100}\NormalTok{, }\DecValTok{2}\NormalTok{),}
+            \StringTok{"Sharpe annualisé"}\NormalTok{: }\BuiltInTok{round}\NormalTok{(ret\_bh.mean() }\OperatorTok{/}\NormalTok{ ret\_bh.std() }\OperatorTok{*}\NormalTok{ np.sqrt(}\DecValTok{252}\NormalTok{), }\DecValTok{2}\NormalTok{), }\StringTok{"nb de changements"}\NormalTok{: }\DecValTok{0}\NormalTok{\})}
+\BuiltInTok{print}\NormalTok{(pd.DataFrame(lig).to\_string(index}\OperatorTok{=}\VariableTok{False}\NormalTok{))}
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\ControlFlowTok{for}\NormalTok{ nom, c }\KeywordTok{in}\NormalTok{ courbes.items(): plt.plot(rend\_te[}\StringTok{"Date"}\NormalTok{].values, c.values, label}\OperatorTok{=}\NormalTok{nom)}
+\NormalTok{plt.title(}\StringTok{"Valeur d\textquotesingle{}un portefeuille de 1 (test, coût 0,10 \% par changement)"}\NormalTok{)}\OperatorTok{;}\NormalTok{ plt.xlabel(}\StringTok{"Date"}\NormalTok{)}\OperatorTok{;}\NormalTok{ plt.ylabel(}\StringTok{"Valeur cumulée (base 1)"}\NormalTok{)}
+\NormalTok{plt.legend()}\OperatorTok{;}\NormalTok{ plt.savefig(DOSSIER\_FIG }\OperatorTok{/} \StringTok{"04\_backtest.png"}\NormalTok{, dpi}\OperatorTok{=}\DecValTok{150}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}\NormalTok{)}\OperatorTok{;}\NormalTok{ plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{            stratégie  rendement cumulé (\%)  Sharpe annualisé  nb de changements}
+\NormalTok{Régression logistique                 21.53              1.73                100}
+\NormalTok{      Forêt aléatoire                 16.68              1.18                118}
+\NormalTok{    Gradient boosting                 15.61              1.34                124}
+\NormalTok{    Acheter{-}conserver                 32.28              1.68                  0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=\textheight]{../../figures/04_backtest.png}
+\caption{Backtest simplifié sur le test (coût 0,10 \%)}
+\end{figure}
+
+\textbf{Lecture.} Après coûts supposés de 0,10 \%, aucune stratégie ne
+dépasse l'achat-conservation en rendement cumulé (+32,3 \%) ; la
+régression logistique obtient +21,5 \% avec un Sharpe de 1,73 contre
+1,68, écart trop faible pour être conclu sur 290 séances. Les stratégies
+restent investies en moyenne moins longtemps dans un marché très
+haussier, d'où leur retard.
+
+\hypertarget{analyse-critique}{%
+\subsection{8. Analyse critique}\label{analyse-critique}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Réponse à la question.} La marche aléatoire \emph{stricte} est
+  rejetée statistiquement pour le MASI (autocorrélation de rendement
+  significative, ρ₁ ≈ 0,13), mais \textbf{nous ne démontrons pas qu'on
+  puisse la battre de façon exploitable} : sur le test, aucun modèle ne
+  dépasse la référence majoritaire ; en validation glissante, la
+  meilleure (forêt, +2,8 points) n'est pas significative (p = 0,14).
+\item
+  \textbf{Puissance limitée.} Avec \textasciitilde290 observations,
+  l'intervalle à 95 \% de la précision est d'environ ±5,6 points : un
+  avantage réel de 2-3 points est indétectable. Absence de preuve ≠
+  preuve d'absence.
+\item
+  \textbf{Sensibilité à la période.} La référence dépend de la part de
+  hausses (50,7 \% train, 55,3 \% validation, 58,8 \% test) : un marché
+  haussier favorise « toujours hausse ». Les résultats peuvent
+  s'inverser dans un marché baissier.
+\item
+  \textbf{Comparaisons multiples.} Trois familles de modèles et
+  \textasciitilde20 configurations ont été essayées : le risque de faux
+  positif augmente ; les p-valeurs ne sont pas corrigées.
+\item
+  \textbf{Fuite résiduelle.} Les hyperparamètres choisis sur la
+  validation sont réutilisés dans le \emph{walk-forward} (qui recouvre
+  cette période) : légère optimisme possible. L'embargo d'une ligne
+  traite le chevauchement de cible, mais pas la dépendance sérielle de
+  la volatilité.
+\item
+  \textbf{Données.} Pas de volume, ouverture quasi toujours égale à la
+  clôture de la veille, une seule série, indice non directement
+  négociable (ETF/frais, liquidité, écarts de prix non modélisés). Le
+  MASI peut subir un effet de cotation peu fréquente sur certaines
+  valeurs, hypothèse plausible pour l'autocorrélation mais \textbf{non
+  testée ici}.
+\item
+  \textbf{Coûts.} Les 0,10 \% sont une hypothèse ; la fiscalité et les
+  frais réels peuvent dégrader davantage les stratégies actives (100-124
+  changements de position sur le test).
+\item
+  \textbf{Pistes.} Classes de rendement avec seuil (ignorer les petites
+  variations), modèles de volatilité (GARCH), plus d'actifs, correction
+  des tests multiples.
+\end{itemize}
+
+\hypertarget{conclusion}{%
+\subsection{9. Conclusion}\label{conclusion}}
+
+Sur le MASI (2018-2025), \textbf{les modèles d'apprentissage supervisé
+testés (régression logistique, forêt aléatoire, gradient boosting) ne
+battent pas de façon significative la référence « marche aléatoire »}
+(classe majoritaire) pour prédire le sens du rendement du lendemain :
+sur le test, 50,3 \% à 53,4 \% contre 58,6 \% pour la référence ; en
+walk-forward, au mieux 56,1 \% contre 53,3 \%, sans significativité (p =
+0,14). L'objectif mesurable fixé en section 1 \textbf{n'est donc pas
+atteint}. Le MASI présente néanmoins une autocorrélation de court terme
+significative, qui justifie des études complémentaires plus puissantes
+(plus d'actifs, plus de période, coûts réalistes).
+
+\hypertarget{ruxe9fuxe9rences}{%
+\subsection{10. Références}\label{ruxe9fuxe9rences}}
+
+\begin{itemize}
+\tightlist
+\item
+  Fama, E. F. (1970). \emph{Efficient Capital Markets: A Review of
+  Theory and Empirical Work}. The Journal of Finance, 25(2), 383-417.
+\item
+  Lo, A. W. \& MacKinlay, A. C. (1988). \emph{Stock Market Prices Do Not
+  Follow Random Walks: Evidence from a Simple Specification Test}. The
+  Review of Financial Studies, 1(1), 41-66.
+\item
+  Ljung, G. M. \& Box, G. E. P. (1978). \emph{On a Measure of Lack of
+  Fit in Time Series Models}. Biometrika, 65(2), 297-303.
+\item
+  McNemar, Q. (1947). \emph{Note on the sampling error of the difference
+  between correlated proportions or percentages}. Psychometrika, 12(2),
+  153-157.
+\item
+  Bergmeir, C. \& Benítez, J. M. (2012). \emph{On the use of
+  cross-validation for time series predictor evaluation}. Information
+  Sciences, 191, 192-213.
+\item
+  Pedregosa, F. et al.~(2011). \emph{Scikit-learn: Machine Learning in
+  Python}. Journal of Machine Learning Research, 12, 2825-2830.
+\item
+  Hastie, T., Tibshirani, R. \& Friedman, J. (2009). \emph{The Elements
+  of Statistical Learning} (2e éd.). Springer.
+\item
+  Données : fichier
+  \texttt{Moroccan\_All\_Shares\_Historical\_Data\_\_1\_.csv} fourni
+  pour le projet (indice MASI, Bourse de Casablanca ; export de type
+  Investing.com).
+\end{itemize}
+
+\hypertarget{duxe9claration-des-ressources-et-outils-dia}{%
+\subsection{Déclaration des ressources et outils
+d'IA}\label{duxe9claration-des-ressources-et-outils-dia}}
+
+\begin{quote}
+\textbf{À relire et adapter par l'étudiant avant remise.}
+\end{quote}
+
+Un assistant d'IA générative (Claude, Anthropic) a été utilisé pour
+produire une première version de la structure du notebook, du code
+Python et des commentaires, à partir de la consigne et du fichier de
+données fournis. Le code a été exécuté de bout en bout (Python 3.12,
+graine 42) et les résultats présentés proviennent de cette exécution.
+Les choix de conception (cible, variables, protocole chronologique,
+tests) doivent être compris, vérifiés et assumés par l'auteur. Aucune
+donnée externe n'a été utilisée en dehors du fichier fourni.
+
+\end{document}
